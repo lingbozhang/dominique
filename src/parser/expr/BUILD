@@ -1,0 +1,41 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "expr",
+    srcs = [
+        "access.cc",
+        "and.cc",
+        "arith.cc",
+        "constant.cc",
+        "expr.cc",
+        "id.cc",
+        "logical.cc",
+        "not.cc",
+        "op.cc",
+        "or.cc",
+        "rel.cc",
+        "temp.cc",
+        "unary.cc",
+    ],
+    hdrs = [
+        "access.h",
+        "and.h",
+        "arith.h",
+        "constant.h",
+        "expr.h",
+        "id.h",
+        "logical.h",
+        "not.h",
+        "op.h",
+        "or.h",
+        "rel.h",
+        "temp.h",
+        "unary.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//src/lexer:token",
+        "//src/parser:node",
+        "//src/symbol",
+    ],
+)
