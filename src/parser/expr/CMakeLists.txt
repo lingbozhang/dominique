@@ -1,0 +1,39 @@
+include(bazel)
+cmake_minimum_required(VERSION 3.13)
+
+cc_library(
+  STATIC
+  NAME "expr"
+  SRCS 
+      "access.cc"
+      "and.cc"
+      "arith.cc"
+      "constant.cc"
+      "expr.cc"
+      "id.cc"
+      "logical.cc"
+      "not.cc"
+      "op.cc"
+      "or.cc"
+      "rel.cc"
+      "temp.cc"
+      "unary.cc"
+  HDRS
+      "access.h"
+      "and.h"
+      "arith.h"
+      "constant.h"
+      "expr.h"
+      "id.h"
+      "logical.h"
+      "not.h"
+      "op.h"
+      "or.h"
+      "rel.h"
+      "temp.h"
+      "unary.h"
+  PUBLIC_DEPS
+      "node"
+      "token"
+      "symbol"
+)

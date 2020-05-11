@@ -15,13 +15,15 @@ Contributor(s):
 #ifndef INTELLGRAPH_SRC_PARSER_PARSER_PARSER_H_
 #define INTELLGRAPH_SRC_PARSER_PARSER_PARSER_H_
 
-#include "gtest/gtest_prod.h"
+//#include "gtest/gtest_prod.h"
 #include "src/lexer/lexer.h"
+#include "src/lexer/token.h"
 #include "src/parser/expr/access.h"
 #include "src/parser/expr/expr.h"
 #include "src/parser/expr/id.h"
 #include "src/parser/stmt/stmt.h"
 #include "src/symbol/env.h"
+#include "src/symbol/type.h"
 
 namespace intellgraph {
 namespace parser {
@@ -35,7 +37,6 @@ class Parser {
   void Program();
 
   std::unique_ptr<inter::Stmt> Block();
-  void Decls();
   std::unique_ptr<symbols::Type> Type();
   std::unique_ptr<inter::Stmt> Stmts();
   std::unique_ptr<inter::Stmt> Stmt();
@@ -54,10 +55,20 @@ class Parser {
   void Error(const std::string& str);
   void Match(int t);
 
-  FRIEND_TEST(ParserTest, DimsOne);
-  FRIEND_TEST(ParserTest, DimsTwo);
+  //  FRIEND_TEST(ParserTest, DimsOne);
+  //  FRIEND_TEST(ParserTest, DimsTwo);
+  //  FRIEND_TEST(ParserTest, DeclsBool);
+  //  FRIEND_TEST(ParserTest, DeclsBoolArray);
+  //  FRIEND_TEST(ParserTest, DeclsInt);
+  //  FRIEND_TEST(ParserTest, DeclsIntArray);
+  //  FRIEND_TEST(ParserTest, DeclsFloat);
+  //  FRIEND_TEST(ParserTest, DeclsFloatArray);
+  //  FRIEND_TEST(ParserTest, DeclsChar);
+  //  FRIEND_TEST(ParserTest, DeclsCharArray);
+
   std::unique_ptr<symbols::Type> Dims(std::unique_ptr<symbols::Type> p);
   std::unique_ptr<inter::Access> Offset(const inter::Id* a);
+  void Decls();
 
   std::unique_ptr<lexer::Lexer> lex_;
   std::unique_ptr<lexer::Token> look_;

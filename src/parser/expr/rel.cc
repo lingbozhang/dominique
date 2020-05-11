@@ -34,18 +34,6 @@ Rel& Rel::operator=(Rel&& obj) {
 }
 Rel::~Rel() = default;
 
-std::unique_ptr<symbols::Type> Rel::Check(const symbols::Type* type1,
-                                          const symbols::Type* type2) {
-  if (dynamic_cast<const symbols::Array*>(type1) != nullptr ||
-      dynamic_cast<const symbols::Array*>(type2) != nullptr) {
-    return symbols::Type::Null().CloneType();
-  } else if (*type1 == *type2) {
-    return symbols::Type::Bool().CloneType();
-  } else {
-    return symbols::Type::Null().CloneType();
-  }
-}
-
 void Rel::Jumping(int t, int f) {
   std::unique_ptr<Expr> a = this->expr1_->Reduce();
   std::unique_ptr<Expr> b = this->expr2_->Reduce();

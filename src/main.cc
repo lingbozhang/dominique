@@ -1,4 +1,4 @@
-/* Copyright 2020 The IntellGraph Authors. All Rights Reserved.
+/* Copyright 2021 The IntellGraph Authors. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -12,19 +12,18 @@ limitations under the License.
 Contributor(s):
         Lingbo Zhang <lingboz2015@gmail.com>
 ==============================================================================*/
+#include <iostream>
+#include <string>
 
-#include "src/lexer/lexer.h"
-#include "src/parser/parser/parser.h"
+#include "src/lexer/token.h"
+#include "src/parser/node.h"
+#include "src/symbol/type.h"
+
+using namespace intellgraph;
 
 int main() {
-  std::string codes =
-      "{\n"
-      "int[100] x; int y;\n"
-      "y = x[1];\n"
-      "}";
-  auto lex = std::make_unique<intellgraph::lexer::Lexer>();
-  auto parser = std::make_unique<intellgraph::parser::Parser>(std::move(lex));
-  parser->ReadCodes(codes);
-  parser->Program();
+  lexer::Token token('1');
+  lexer::Word word("test", '1');
+  std::cout << symbols::Type::Int().ToString() << std::endl;
   return 0;
 }

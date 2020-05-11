@@ -40,7 +40,7 @@ class Id : public Expr {
   }
 
   std::unique_ptr<Id> CloneId() const { return std::make_unique<Id>(*this); }
-
+  // Relative address of the identifier
   int offset_;
 };
 

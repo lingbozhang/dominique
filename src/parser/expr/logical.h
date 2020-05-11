@@ -31,6 +31,9 @@ class Logical : public Expr {
   Logical& operator=(Logical&& logical);
   ~Logical() override;
 
+  bool operator==(const Logical &obj) const;
+  bool operator!=(const Logical &obj) const;
+
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Logical>(*this);
   }
@@ -42,8 +45,8 @@ class Logical : public Expr {
 
   std::unique_ptr<Expr> Gen() final;
 
-  virtual std::unique_ptr<symbols::Type> Check(const symbols::Type* type1,
-                                               const symbols::Type* type2);
+  std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
+                                       const symbols::Type *type2);
 
   std::unique_ptr<Expr> expr1_;
   std::unique_ptr<Expr> expr2_;

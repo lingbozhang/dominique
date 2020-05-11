@@ -14,6 +14,9 @@ Contributor(s):
 ==============================================================================*/
 #include "src/parser/expr/logical.h"
 
+#include "src/lexer/tag.h"
+#include "src/symbol/array.h"
+
 namespace intellgraph {
 namespace inter {
 
@@ -23,7 +26,7 @@ Logical::Logical(std::unique_ptr<lexer::Token> token,
       expr1_(std::move(expr1)),
       expr2_(std::move(expr2)) {
   std::unique_ptr<symbols::Type> type =
-      Check(expr1_->type_.get(), expr2_->type_.get());
+      this->Check(expr1_->type_.get(), expr2_->type_.get());
   if (*type == symbols::Type::Null()) {
     this->Error("Type Error");
   }
@@ -51,6 +54,13 @@ Logical& Logical::operator=(Logical&& logical) {
 }
 Logical::~Logical() = default;
 
+bool Logical::operator==(const Logical &obj) const {
+  return Expr::operator==(obj) && *expr1_ == *obj.expr1_ &&
+         *expr2_ == *obj.expr2_;
+}
+
+bool Logical::operator!=(const Logical &obj) const { return !(*this == obj); }
+
 std::unique_ptr<Expr> Logical::Gen() {
   int f = this->NewLabel();
   int a = this->NewLabel();
@@ -66,10 +76,25 @@ std::unique_ptr<Expr> Logical::Gen() {
 
 std::unique_ptr<symbols::Type> Logical::Check(const symbols::Type* type1,
                                               const symbols::Type* type2) {
-  if (*type1 == symbols::Type::Bool() && *type2 == symbols::Type::Bool()) {
-    return symbols::Type::Bool().CloneType();
+  if (this->op_->tag_ == '<' || this->op_->tag_ == '>' ||
+      this->op_->tag_ == lexer::tag::kLe ||
+      this->op_->tag_ == lexer::tag::kGe) {
+    // TypeCheck for the Rel class
+    if (dynamic_cast<const symbols::Array *>(type1) != nullptr ||
+        dynamic_cast<const symbols::Array *>(type2) != nullptr) {
+      return symbols::Type::Null().CloneType();
+    } else if (*type1 == *type2) {
+      return symbols::Type::Bool().CloneType();
+    } else {
+      return symbols::Type::Null().CloneType();
+    }
   } else {
-    return symbols::Type::Null().CloneType();
+    // TypeCheck for the Logical class
+    if (*type1 == symbols::Type::Bool() && *type2 == symbols::Type::Bool()) {
+      return symbols::Type::Bool().CloneType();
+    } else {
+      return symbols::Type::Null().CloneType();
+    }
   }
 }
 

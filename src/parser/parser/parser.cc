@@ -43,7 +43,8 @@ Contributor(s):
 namespace intellgraph {
 namespace parser {
 
-Parser::Parser(std::unique_ptr<lexer::Lexer> lex) : lex_(std::move(lex)) {}
+Parser::Parser(std::unique_ptr<lexer::Lexer> lex)
+    : lex_(std::move(lex)), top_(std::make_unique<symbols::Env>(nullptr)) {}
 
 Parser::~Parser() = default;
 
@@ -320,8 +321,7 @@ std::unique_ptr<inter::Expr> Parser::Factor() {
       return x;
     }
     case lexer::tag::kTrue: {
-      x = std::make_unique<inter::Constant>(lexer::Word::True().Clone(),
-                                            symbols::Type::Bool().CloneType());
+      x = inter::Constant::True().Clone();
       Move();
       return x;
     }

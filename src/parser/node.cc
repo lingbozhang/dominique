@@ -14,6 +14,8 @@ Contributor(s):
 ==============================================================================*/
 #include "src/parser/node.h"
 
+#include "src/lexer/lexer.h"
+
 namespace intellgraph {
 namespace inter {
 

@@ -38,6 +38,13 @@ Arith::Arith(Arith&& arith)
       expr2_(std::move(arith.expr2_)) {}
 Arith::~Arith() = default;
 
+bool Arith::operator==(const Arith &obj) const {
+  return Op::operator==(obj) && *expr1_ == *obj.expr1_ &&
+         *expr2_ == *obj.expr2_;
+}
+
+bool Arith::operator!=(const Arith &obj) const { return !(*this == obj); }
+
 std::unique_ptr<Expr> Arith::Gen() {
   return std::make_unique<Arith>(this->op_->Clone(), expr1_->Reduce(),
                                  expr2_->Reduce());

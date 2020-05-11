@@ -18,7 +18,6 @@ Contributor(s):
 #include <iostream>
 #include <string>
 
-#include "src/lexer/lexer.h"
 #include "src/util.h"
 
 namespace intellgraph {

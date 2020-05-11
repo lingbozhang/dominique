@@ -18,7 +18,7 @@ namespace intellgraph {
 namespace inter {
 
 Not::Not(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr)
-    : Logical(std::move(token), std::move(expr), std::move(expr)) {}
+    : Logical(std::move(token), expr->Clone(), std::move(expr)) {}
 Not::Not(const Not& obj)
     : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
 Not::Not(Not&& obj)
@@ -33,6 +33,10 @@ Not& Not::operator=(Not&& obj) {
   return *this;
 }
 Not::~Not() = default;
+
+bool Not::operator==(const Not &obj) const { return Logical::operator==(obj); }
+
+bool Not::operator!=(const Not &obj) const { return !(*this == obj); }
 
 }  // namespace inter
 }  // namespace intellgraph

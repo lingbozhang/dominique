@@ -31,6 +31,10 @@ Op& Op::operator=(Op&& op) {
 }
 Op::~Op() = default;
 
+bool Op::operator==(const Op &op) const { return Expr::operator==(op); }
+
+bool Op::operator!=(const Op &op) const { return !(*this == op); }
+
 std::unique_ptr<Expr> Op::Reduce() {
   std::unique_ptr<Expr> x = this->Gen();
   std::unique_ptr<Temp> t = std::make_unique<Temp>(this->type_->CloneType());

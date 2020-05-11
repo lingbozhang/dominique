@@ -21,7 +21,6 @@ Contributor(s):
 namespace intellgraph {
 namespace inter {
 
-// Handles minus
 class Unary : public Op {
  public:
   Unary(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr);
@@ -30,6 +29,9 @@ class Unary : public Op {
   Unary& operator=(const Unary& unary);
   Unary& operator=(Unary&& unary);
   ~Unary() override;
+
+  bool operator==(const Unary &unary) const;
+  bool operator!=(const Unary &unary) const;
 
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Unary>(*this);

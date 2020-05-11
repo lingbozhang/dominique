@@ -35,8 +35,6 @@ class Rel : public Logical {
     return std::make_unique<Rel>(*this);
   }
 
-  std::unique_ptr<symbols::Type> Check(const symbols::Type* type1,
-                                       const symbols::Type* type2) override;
   void Jumping(int t, int f) override;
 };
 

@@ -29,6 +29,9 @@ class Not : public Logical {
   Not& operator=(Not&& obj);
   ~Not() override;
 
+  bool operator==(const Not &obj) const;
+  bool operator!=(const Not &obj) const;
+
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Not>(*this);
   }

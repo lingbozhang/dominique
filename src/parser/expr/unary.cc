@@ -19,7 +19,7 @@ namespace inter {
 
 Unary::Unary(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr)
     : Op(std::move(token), nullptr), expr_(std::move(expr)) {
-  symbols::Type type = symbols::Type::Max(symbols::Type::Int(), *expr->type_);
+  symbols::Type type = symbols::Type::Max(symbols::Type::Int(), *expr_->type_);
   if (type == symbols::Type::Null()) {
     this->Error("Type Error");
   }
@@ -42,6 +42,12 @@ Unary& Unary::operator=(Unary&& unary) {
   return *this;
 }
 Unary::~Unary() = default;
+
+bool Unary::operator==(const Unary &unary) const {
+  return Expr::operator==(unary) && Op::operator==(unary);
+}
+
+bool Unary::operator!=(const Unary &unary) const { return !(*this == unary); }
 
 std::unique_ptr<Expr> Unary::Gen() {
   return std::make_unique<Unary>(this->op_->Clone(), expr_->Reduce());

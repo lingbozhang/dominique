@@ -32,6 +32,9 @@ class Op : public Expr {
   Op& operator=(Op&& op);
   ~Op() override;
 
+  bool operator==(const Op &op) const;
+  bool operator!=(const Op &op) const;
+
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Op>(*this);
   }

@@ -32,6 +32,9 @@ class Arith : public Op {
   Arith& operator=(Arith&& arith);
   ~Arith() override;
 
+  bool operator==(const Arith &obj) const;
+  bool operator!=(const Arith &obj) const;
+
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Arith>(*this);
   }

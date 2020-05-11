@@ -14,9 +14,9 @@ Contributor(s):
 ==============================================================================*/
 #include "src/symbol/type.h"
 
-#include "gtest/gtest.h"
 #include "src/lexer/tag.h"
 #include "src/lexer/token.h"
+#include "gtest/gtest.h"
 
 namespace intellgraph {
 namespace symbols {

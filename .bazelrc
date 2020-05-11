@@ -1,1 +1,2 @@
-build --cxxopt='-std=c++17'
+# Builds with c++17 in a debug mode. Test command also inherits these options
+build --cxxopt='-std=c++17' -c dbg
