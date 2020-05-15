@@ -31,6 +31,9 @@ class Access : public Op {
   Access& operator=(Access&& obj);
   ~Access() override;
 
+  bool operator==(const Access &obj) const;
+  bool operator!=(const Access &obj) const;
+
   std::unique_ptr<Expr> Clone() const override {
     return std::make_unique<Access>(*this);
   }

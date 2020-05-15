@@ -9,8 +9,16 @@ cc_library(
   DEPS
       "env"
       "expr"
+      "gtest"
       "lexer"
       "token"
       "stmt"
       "symbol"
+)
+
+
+cc_test(
+  NAME "parser_unittests"
+  SRCS "parser_test.cc"
+  DEPS "parser"
 )

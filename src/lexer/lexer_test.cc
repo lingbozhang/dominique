@@ -14,8 +14,8 @@ Contributor(s):
 ==============================================================================*/
 #include "src/lexer/lexer.h"
 
-#include "gtest/gtest.h"
 #include "src/lexer/token.h"
+#include "gtest/gtest.h"
 
 namespace intellgraph {
 namespace lexer {

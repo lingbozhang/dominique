@@ -17,6 +17,7 @@ Contributor(s):
 #include <memory>
 
 #include "src/lexer/token.h"
+#include "src/parser/expr/access.h"
 #include "src/parser/expr/and.h"
 #include "src/parser/expr/arith.h"
 #include "src/parser/expr/constant.h"
@@ -25,6 +26,8 @@ Contributor(s):
 #include "src/parser/expr/not.h"
 #include "src/parser/expr/rel.h"
 #include "src/parser/expr/unary.h"
+#include "src/parser/stmt/set.h"
+#include "src/parser/stmt/set_elem.h"
 #include "src/symbol/array.h"
 #include "src/symbol/type.h"
 #include "src/util.h"
@@ -658,6 +661,151 @@ TEST_F(ParserTest, JoinAnd) {
       static_cast_unique_ptr<inter::Rel>(parser_->Join());
 
   ASSERT_EQ(expected_and, *arith);
+}
+
+TEST_F(ParserTest, BoolOr) {
+  std::string codes = "(123 >= 123) || (123 < 123)";
+  inter::Constant x1 = inter::Constant(lexer::Num(123).Clone(),
+                                       symbols::Type::Int().CloneType());
+  inter::Rel rel1 =
+      inter::Rel(lexer::Token(lexer::tag::kGe).Clone(), x1.Clone(), x1.Clone());
+  inter::Rel rel2 =
+      inter::Rel(lexer::Token('<').Clone(), x1.Clone(), x1.Clone());
+  inter::And expected_and = inter::And(lexer::Token(lexer::tag::kOr).Clone(),
+                                       rel1.Clone(), rel2.Clone());
+
+  parser_->ReadCodes(codes);
+  std::unique_ptr<inter::Rel> arith =
+      static_cast_unique_ptr<inter::Rel>(parser_->Bool());
+
+  ASSERT_EQ(expected_and, *arith);
+}
+
+TEST_F(ParserTest, AssignBool) {
+  std::string codes = "bool id; id = true;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                symbols::Type::Bool().CloneType(), 0 /* offset */);
+  inter::Set expected_stmt =
+      inter::Set(std::make_unique<inter::Id>(expected_id),
+                 inter::Constant::True().Clone());
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::Set> stmt =
+      static_cast_unique_ptr<inter::Set>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
+}
+
+TEST_F(ParserTest, AssignBoolArray) {
+  std::string codes = "bool[10] id; id[1] = false;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                std::make_unique<symbols::Array>(
+                    symbols::Type::Bool().CloneType(), 10 /* array_size */),
+                0 /* offset */);
+  inter::Access expected_index = inter::Access(
+      std::make_unique<inter::Id>(expected_id),
+      std::make_unique<inter::Arith>(
+          std::make_unique<lexer::Token>('*'), inter::Constant(1).Clone(),
+          std::make_unique<inter::Constant>(1 /* bool_width */)),
+      symbols::Type::Bool().CloneType());
+  inter::SetElem expected_stmt =
+      inter::SetElem(std::make_unique<inter::Access>(expected_index),
+                     inter::Constant::False().Clone());
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::SetElem> stmt =
+      static_cast_unique_ptr<inter::SetElem>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
+}
+
+TEST_F(ParserTest, AssignInt) {
+  std::string codes = "int id; id = 10;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                symbols::Type::Int().CloneType(), 0 /* offset */);
+  inter::Set expected_stmt = inter::Set(
+      std::make_unique<inter::Id>(expected_id), inter::Constant(10).Clone());
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::Set> stmt =
+      static_cast_unique_ptr<inter::Set>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
+}
+
+TEST_F(ParserTest, AssignIntArray) {
+  std::string codes = "int[10] id; id[1] = 22;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                std::make_unique<symbols::Array>(
+                    symbols::Type::Int().CloneType(), 10 /* array_size */),
+                0 /* offset */);
+  inter::Access expected_index = inter::Access(
+      std::make_unique<inter::Id>(expected_id),
+      std::make_unique<inter::Arith>(
+          std::make_unique<lexer::Token>('*'), inter::Constant(1).Clone(),
+          std::make_unique<inter::Constant>(4 /* int_width */)),
+      symbols::Type::Int().CloneType());
+  inter::SetElem expected_stmt =
+      inter::SetElem(std::make_unique<inter::Access>(expected_index),
+                     inter::Constant(22).Clone());
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::SetElem> stmt =
+      static_cast_unique_ptr<inter::SetElem>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
+}
+
+TEST_F(ParserTest, AssignFloat) {
+  std::string codes = "float id; id = 10.4;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                symbols::Type::Float().CloneType(), 0 /* offset */);
+  inter::Set expected_stmt = inter::Set(
+      std::make_unique<inter::Id>(expected_id),
+      std::make_unique<inter::Constant>(std::make_unique<lexer::Real>(10.4),
+                                        symbols::Type::Float().CloneType()));
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::Set> stmt =
+      static_cast_unique_ptr<inter::Set>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
+}
+
+TEST_F(ParserTest, AssignFloatArray) {
+  std::string codes = "float[20] id; id[1] = 88.88;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                std::make_unique<symbols::Array>(
+                    symbols::Type::Float().CloneType(), 20 /* array_size */),
+                0 /* offset */);
+  inter::Access expected_index = inter::Access(
+      std::make_unique<inter::Id>(expected_id),
+      std::make_unique<inter::Arith>(
+          std::make_unique<lexer::Token>('*'), inter::Constant(1).Clone(),
+          std::make_unique<inter::Constant>(8 /* int_width */)),
+      symbols::Type::Float().CloneType());
+  inter::SetElem expected_stmt = inter::SetElem(
+      std::make_unique<inter::Access>(expected_index),
+      std::make_unique<inter::Constant>(std::make_unique<lexer::Real>(88.88),
+                                        symbols::Type::Float().CloneType()));
+
+  parser_->ReadCodes(codes);
+  parser_->Decls();
+  std::unique_ptr<inter::SetElem> stmt =
+      static_cast_unique_ptr<inter::SetElem>(parser_->Assign());
+
+  ASSERT_EQ(expected_stmt, *stmt);
 }
 
 }  // namespace parser

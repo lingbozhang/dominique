@@ -15,7 +15,6 @@ Contributor(s):
 #ifndef INTELLGRAPH_SRC_PARSER_PARSER_PARSER_H_
 #define INTELLGRAPH_SRC_PARSER_PARSER_PARSER_H_
 
-//#include "gtest/gtest_prod.h"
 #include "src/lexer/lexer.h"
 #include "src/lexer/token.h"
 #include "src/parser/expr/access.h"
@@ -24,16 +23,17 @@ Contributor(s):
 #include "src/parser/stmt/stmt.h"
 #include "src/symbol/env.h"
 #include "src/symbol/type.h"
+#include "gtest/gtest_prod.h"
 
 namespace intellgraph {
 namespace parser {
 
 class Parser {
- public:
+public:
   Parser(std::unique_ptr<lexer::Lexer> lex);
   ~Parser();
 
-  void ReadCodes(const std::string& codes);
+  void ReadCodes(const std::string &codes);
   void Program();
 
   std::unique_ptr<inter::Stmt> Block();
@@ -50,25 +50,31 @@ class Parser {
   std::unique_ptr<inter::Expr> Unary();
   std::unique_ptr<inter::Expr> Factor();
 
- private:
+private:
   void Move();
-  void Error(const std::string& str);
+  void Error(const std::string &str);
   void Match(int t);
 
-  //  FRIEND_TEST(ParserTest, DimsOne);
-  //  FRIEND_TEST(ParserTest, DimsTwo);
-  //  FRIEND_TEST(ParserTest, DeclsBool);
-  //  FRIEND_TEST(ParserTest, DeclsBoolArray);
-  //  FRIEND_TEST(ParserTest, DeclsInt);
-  //  FRIEND_TEST(ParserTest, DeclsIntArray);
-  //  FRIEND_TEST(ParserTest, DeclsFloat);
-  //  FRIEND_TEST(ParserTest, DeclsFloatArray);
-  //  FRIEND_TEST(ParserTest, DeclsChar);
-  //  FRIEND_TEST(ParserTest, DeclsCharArray);
+  FRIEND_TEST(ParserTest, DimsOne);
+  FRIEND_TEST(ParserTest, DimsTwo);
+  FRIEND_TEST(ParserTest, DeclsBool);
+  FRIEND_TEST(ParserTest, DeclsBoolArray);
+  FRIEND_TEST(ParserTest, DeclsInt);
+  FRIEND_TEST(ParserTest, DeclsIntArray);
+  FRIEND_TEST(ParserTest, DeclsFloat);
+  FRIEND_TEST(ParserTest, DeclsFloatArray);
+  FRIEND_TEST(ParserTest, DeclsChar);
+  FRIEND_TEST(ParserTest, DeclsCharArray);
+  FRIEND_TEST(ParserTest, AssignBool);
+  FRIEND_TEST(ParserTest, AssignBoolArray);
+  FRIEND_TEST(ParserTest, AssignInt);
+  FRIEND_TEST(ParserTest, AssignIntArray);
+  FRIEND_TEST(ParserTest, AssignFloat);
+  FRIEND_TEST(ParserTest, AssignFloatArray);
 
-  std::unique_ptr<symbols::Type> Dims(std::unique_ptr<symbols::Type> p);
-  std::unique_ptr<inter::Access> Offset(const inter::Id* a);
   void Decls();
+  std::unique_ptr<symbols::Type> Dims(std::unique_ptr<symbols::Type> p);
+  std::unique_ptr<inter::Access> Offset(const inter::Id *a);
 
   std::unique_ptr<lexer::Lexer> lex_;
   std::unique_ptr<lexer::Token> look_;
@@ -76,7 +82,7 @@ class Parser {
   int used_ = 0;
 };
 
-}  // namespace parser
-}  // namespace intellgraph
+} // namespace parser
+} // namespace intellgraph
 
 #endif  // INTELLGRAPH_SRC_PARSER_PARSER_PARSER_H_

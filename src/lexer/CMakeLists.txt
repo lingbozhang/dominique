@@ -17,3 +17,11 @@ cc_library(
   HDRS "lexer.h"
   DEPS "symbol"
 )
+
+cc_test(
+  NAME "lexer_unittests"
+  SRCS "lexer_test.cc"
+  DEPS
+      "lexer"
+      "token"
+)

@@ -20,7 +20,7 @@ function(cc_binary)
     ${ARGN}
   )
   if(NOT CC_BINARY_NAME)
-    message(FATAL_ERROR "Library name is not specified")
+    message(FATAL_ERROR "Binary name is not specified")
   endif()
   if(NOT CC_BINARY_SRCS)
     message(FATAL_ERROR "Source files are not specified for target: 
@@ -30,8 +30,7 @@ function(cc_binary)
   if(CC_BINARY_DEPS) 
     target_link_libraries(
       ${CC_BINARY_NAME}
-     PRIVATE
-      ${CC_BINARY_DEPS}
+     PRIVATE ${CC_BINARY_DEPS}
   )
   endif()
   set_target_properties(${CC_BINARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
@@ -78,17 +77,56 @@ function(cc_library)
   if(CC_LIBRARY_DEPS) 
     target_link_libraries(
       ${CC_LIBRARY_NAME}
-     PRIVATE
-      ${CC_LIBRARY_DEPS}
+     PRIVATE ${CC_LIBRARY_DEPS}
     )
   endif()
   if(CC_LIBRARY_PUBLIC_DEPS)
     target_link_libraries(
       ${CC_LIBRARY_NAME}
-     PUBLIC
-     ${CC_LIBRARY_PUBLIC_DEPS}
+     PUBLIC ${CC_LIBRARY_PUBLIC_DEPS}
     )
   endif()
 
   set_target_properties(${CC_LIBRARY_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 endfunction()
+
+# cc_test for build a test
+function(cc_test)
+  set(options "")
+  set(oneValueArgs NAME)
+  set(multiValueArgs SRCS DEPS)
+  cmake_parse_arguments(
+    CC_TEST
+    "${options}"
+    "${oneValueArgs}"
+    "${multiValueArgs}"
+    ${ARGN}
+  )
+  if(NOT CC_TEST_NAME)
+    message(FATAL_ERROR "Test name is not specified")
+  endif()
+  if(NOT CC_TEST_SRCS)
+    message(FATAL_ERROR "Source files are not specified for target: 
+        ${CC_TEST_NAME}")
+  endif()
+  add_executable(${CC_TEST_NAME} ${CC_TEST_SRCS})
+  target_link_libraries(
+    ${CC_TEST_NAME}
+   PRIVATE
+    gtest gmock gtest_main
+    ${CC_TEST_DEPS}
+  )
+  target_include_directories(
+    ${CC_TEST_NAME}
+   PRIVATE
+    ${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR}
+  )
+  gtest_discover_tests(${CC_TEST_NAME})
+endfunction()
+
+
+
+
+
+
+

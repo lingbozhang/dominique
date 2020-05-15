@@ -31,6 +31,9 @@ class Set : public Stmt {
   Set& operator=(Set&& obj);
   ~Set() override;
 
+  bool operator==(const Set &obj) const;
+  bool operator!=(const Set &obj) const;
+
   std::unique_ptr<Stmt> Clone() const override {
     return std::make_unique<Set>(*this);
   }

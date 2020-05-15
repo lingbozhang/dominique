@@ -15,15 +15,35 @@ Contributor(s):
 #include <iostream>
 #include <string>
 
+#include "src/lexer/lexer.h"
 #include "src/lexer/token.h"
+#include "src/parser/expr/arith.h"
+#include "src/parser/expr/constant.h"
 #include "src/parser/node.h"
+#include "src/parser/parser/parser.h"
+#include "src/parser/stmt/set_elem.h"
+#include "src/symbol/array.h"
 #include "src/symbol/type.h"
 
 using namespace intellgraph;
 
 int main() {
-  lexer::Token token('1');
-  lexer::Word word("test", '1');
-  std::cout << symbols::Type::Int().ToString() << std::endl;
+  auto lex = std::make_unique<lexer::Lexer>();
+  auto parser_ = std::make_unique<parser::Parser>(std::move(lex));
+  std::string codes = "bool[10] id; id[1] = false;";
+  inter::Id expected_id =
+      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
+                std::make_unique<symbols::Array>(
+                    symbols::Type::Bool().CloneType(), 10 /* array_size */),
+                0 /* offset */);
+  inter::Access expected_index = inter::Access(
+      std::make_unique<inter::Id>(expected_id),
+      std::make_unique<inter::Arith>(
+          std::make_unique<lexer::Token>('*'), inter::Constant(1).Clone(),
+          std::make_unique<inter::Constant>(1 /* bool_width */)),
+      symbols::Type::Bool().CloneType());
+  inter::SetElem expected_stmt =
+      inter::SetElem(std::make_unique<inter::Access>(expected_index),
+                     inter::Constant::False().Clone());
   return 0;
 }

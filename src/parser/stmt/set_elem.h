@@ -33,6 +33,9 @@ class SetElem : public Stmt {
   SetElem& operator=(SetElem&& obj);
   ~SetElem() override;
 
+  bool operator==(const SetElem &obj) const;
+  bool operator!=(const SetElem &obj) const;
+
   std::unique_ptr<Stmt> Clone() const override {
     return std::make_unique<SetElem>(*this);
   }

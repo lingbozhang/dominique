@@ -42,6 +42,12 @@ Set& Set::operator=(Set&& obj) {
 }
 Set::~Set() = default;
 
+bool Set::operator==(const Set &obj) const {
+  return *id_ == *obj.id_ && *expr_ == *obj.expr_;
+}
+
+bool Set::operator!=(const Set &obj) const { return !(*this == obj); }
+
 std::unique_ptr<symbols::Type> Set::Check(const symbols::Type* type1,
                                           const symbols::Type* type2) const {
   if (symbols::Type::IsNumeric(*type1) && symbols::Type::IsNumeric(*type2)) {

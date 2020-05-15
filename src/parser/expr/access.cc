@@ -45,6 +45,12 @@ Access& Access::operator=(Access&& obj) {
 }
 Access::~Access() = default;
 
+bool Access::operator==(const Access &obj) const {
+  return Expr::operator==(obj) && *array_ == *obj.array_ &&
+         *index_ == *obj.index_;
+}
+bool Access::operator!=(const Access &obj) const { return !(*this == obj); }
+
 std::unique_ptr<Expr> Access::Gen() {
   return std::make_unique<Access>(array_->CloneId(), index_->Reduce(),
                                   this->type_->CloneType());

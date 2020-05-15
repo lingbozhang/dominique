@@ -22,3 +22,13 @@ cc_library(
       "expr"
       "token"
 )
+
+cc_test(
+  NAME "symbol_unittests"
+  SRCS 
+      "array_test.cc"
+      "type_test.cc"
+  DEPS
+      "token"
+      "symbol"
+)

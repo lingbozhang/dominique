@@ -43,12 +43,17 @@ SetElem& SetElem::operator=(SetElem&& obj) {
 }
 SetElem::~SetElem() = default;
 
+bool SetElem::operator==(const SetElem &obj) const {
+  return *access_ == *obj.access_ && *expr_ == *obj.expr_;
+}
+bool SetElem::operator!=(const SetElem &obj) const { return !(*this == obj); }
+
 std::unique_ptr<symbols::Type> SetElem::Check(
     const symbols::Type* type1, const symbols::Type* type2) const {
   if (dynamic_cast<const symbols::Array*>(type1) != nullptr ||
       dynamic_cast<const symbols::Array*>(type2) != nullptr) {
     return symbols::Type::Null().CloneType();
-  } else if (type1 == type2) {
+  } else if (*type1 == *type2) {
     return type2->CloneType();
   } else if (symbols::Type::IsNumeric(*type1) &&
              symbols::Type::IsNumeric(*type2)) {
