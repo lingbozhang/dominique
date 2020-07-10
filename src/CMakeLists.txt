@@ -8,5 +8,7 @@ add_subdirectory(parser)
 cc_binary(
   NAME "main"
   SRCS "main.cc"
-  DEPS "parser"
+  DEPS 
+      "parser"
+      ${llvm_libs}
 )

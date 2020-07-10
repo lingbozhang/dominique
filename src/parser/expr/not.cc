@@ -19,17 +19,10 @@ namespace inter {
 
 Not::Not(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr)
     : Logical(std::move(token), expr->Clone(), std::move(expr)) {}
-Not::Not(const Not& obj)
+Not::Not(const Not &obj)
     : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
-Not::Not(Not&& obj)
-    : Logical(std::move(obj.op_), std::move(obj.expr1_),
-              std::move(obj.expr2_)) {}
-Not& Not::operator=(const Not& obj) {
+Not &Not::operator=(const Not &obj) {
   Logical::operator=(obj);
-  return *this;
-}
-Not& Not::operator=(Not&& obj) {
-  Logical::operator=(std::move(obj));
   return *this;
 }
 Not::~Not() = default;

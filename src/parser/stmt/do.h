@@ -25,9 +25,7 @@ class Do : public Stmt {
  public:
   Do();
   Do(const Do& obj);
-  Do(Do&& obj);
   Do& operator=(const Do& obj);
-  Do& operator=(Do&& obj);
   ~Do() override;
 
   std::unique_ptr<Stmt> Clone() const override {

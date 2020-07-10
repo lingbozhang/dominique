@@ -39,12 +39,18 @@ Contributor(s):
 #include "src/symbol/env.h"
 #include "src/symbol/type.h"
 #include "src/util.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/IR/LLVMContext.h"
+#include "llvm/IR/Module.h"
 
 namespace intellgraph {
 namespace parser {
 
 Parser::Parser(std::unique_ptr<lexer::Lexer> lex)
-    : lex_(std::move(lex)), top_(std::make_unique<symbols::Env>(nullptr)) {}
+    : llvm_context_(std::make_unique<llvm::LLVMContext>()),
+      llvm_builder_(std::make_unique<llvm::IRBuilder<>>(*llvm_context_)),
+      llvm_module_(std::make_unique<llvm::Module>("Dominiuqe", *llvm_context_)),
+      lex_(std::move(lex)), top_(std::make_unique<symbols::Env>(nullptr)) {}
 
 Parser::~Parser() = default;
 

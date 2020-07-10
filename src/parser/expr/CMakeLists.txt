@@ -36,4 +36,5 @@ cc_library(
       "node"
       "token"
       "symbol"
+      ${llvm_libs}
 )

@@ -27,17 +27,10 @@ Set::Set(std::unique_ptr<Id> id, std::unique_ptr<Expr> expr)
 }
 Set::Set(const Set& obj)
     : id_(std::make_unique<Id>(*obj.id_)), expr_(obj.expr_->Clone()) {}
-Set::Set(Set&& obj) : id_(std::move(obj.id_)), expr_(std::move(obj.expr_)) {}
 Set& Set::operator=(const Set& obj) {
   Stmt::operator=(obj);
   id_ = std::make_unique<Id>(*obj.id_);
   expr_ = obj.expr_->Clone();
-  return *this;
-}
-Set& Set::operator=(Set&& obj) {
-  Stmt::operator=(std::move(obj));
-  id_ = std::move(obj.id_);
-  expr_ = std::move(obj.expr_);
   return *this;
 }
 Set::~Set() = default;

@@ -28,23 +28,11 @@ Array::Array(const Array& array)
     : Type("[]", lexer::tag::kIndex, array.size_ * array.of_->width_),
       of_(static_cast_unique_ptr<Type>(array.of_->Clone())),
       size_(array.size_) {}
-Array::Array(Array&& array)
-    : Type("[]", lexer::tag::kIndex, array.size_ * array.of_->width_),
-      of_(std::move(array.of_)),
-      size_(std::move(array.size_)) {}
 Array& Array::operator=(const Array& array) {
   if (*this != array) {
     Type::operator=(array);
     of_ = static_cast_unique_ptr<Type>(array.of_->Clone());
     size_ = array.size_;
-  }
-  return *this;
-}
-Array& Array::operator=(Array&& array) {
-  if (*this != array) {
-    of_ = std::move(array.of_);
-    size_ = array.size_;
-    Type::operator=(std::move(array));
   }
   return *this;
 }

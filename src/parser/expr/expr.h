@@ -20,35 +20,36 @@ Contributor(s):
 #include "src/lexer/token.h"
 #include "src/parser/node.h"
 #include "src/symbol/type.h"
+#include "llvm/IR/LLVMContext.h"
+#include "llvm/IR/Value.h"
 
 namespace intellgraph {
 namespace inter {
 
 class Expr : public Node {
  public:
-  Expr(std::unique_ptr<lexer::Token> op, std::unique_ptr<symbols::Type> type);
-  Expr(const Expr& expr);
-  Expr(Expr&& expr);
-  Expr& operator=(const Expr& expr);
-  Expr& operator=(Expr&& expr);
-  ~Expr() override;
+   Expr(std::unique_ptr<lexer::Token> op, std::unique_ptr<symbols::Type> type);
+   Expr(const Expr &expr);
+   Expr &operator=(const Expr &expr);
+   ~Expr() override;
 
-  bool operator==(const Expr& expr) const;
-  bool operator!=(const Expr& expr) const;
+   bool operator==(const Expr &) const;
+   bool operator!=(const Expr &) const;
 
-  virtual std::unique_ptr<Expr> Clone() const {
-    return std::make_unique<Expr>(*this);
-  }
-  virtual std::string ToString() const { return op_->ToString(); }
+   virtual std::unique_ptr<Expr> Clone() const;
+   virtual std::string ToString() const;
 
-  virtual std::unique_ptr<Expr> Gen();
-  virtual std::unique_ptr<Expr> Reduce();
+   virtual std::unique_ptr<Expr> Gen();
+   virtual llvm::Value *codegen(llvm::LLVMContext *const context) {
+     return nullptr;
+   }
+   virtual std::unique_ptr<Expr> Reduce();
 
-  virtual void Jumping(int t, int f);
-  void EmitJumps(const std::string& test, int t, int f);
+   virtual void Jumping(int t, int f);
+   void EmitJumps(const std::string &test, int t, int f);
 
-  std::unique_ptr<lexer::Token> op_;
-  std::unique_ptr<symbols::Type> type_;
+   std::unique_ptr<lexer::Token> op_;
+   std::unique_ptr<symbols::Type> type_;
 };
 
 }  // namespace inter

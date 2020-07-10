@@ -19,17 +19,10 @@ namespace inter {
 And::And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
          std::unique_ptr<Expr> expr2)
     : Logical(std::move(token), std::move(expr1), std::move(expr2)) {}
-And::And(const And& obj)
+And::And(const And &obj)
     : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
-And::And(And&& obj)
-    : Logical(std::move(obj.op_), std::move(obj.expr1_),
-              std::move(obj.expr2_)) {}
 And& And::operator=(const And& obj) {
   Logical::operator=(obj);
-  return *this;
-}
-And& And::operator=(And&& obj) {
-  Logical::operator=(std::move(obj));
   return *this;
 }
 And::~And() = default;

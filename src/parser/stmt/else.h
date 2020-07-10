@@ -26,9 +26,7 @@ class Else : public Stmt {
   Else(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt1,
        std::unique_ptr<Stmt> stmt2);
   Else(const Else& obj);
-  Else(Else&& obj);
   Else& operator=(const Else& obj);
-  Else& operator=(Else&& obj);
   ~Else() override;
 
   std::unique_ptr<Stmt> Clone() const override {

@@ -24,6 +24,7 @@ Contributor(s):
 #include "src/parser/stmt/set_elem.h"
 #include "src/symbol/array.h"
 #include "src/symbol/type.h"
+#include "llvm/IR/LLVMContext.h"
 
 using namespace intellgraph;
 

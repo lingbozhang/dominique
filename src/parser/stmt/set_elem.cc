@@ -27,18 +27,10 @@ SetElem::SetElem(std::unique_ptr<Access> access, std::unique_ptr<Expr> expr)
 SetElem::SetElem(const SetElem& obj)
     : access_(std::make_unique<Access>(*obj.access_)),
       expr_(obj.expr_->Clone()) {}
-SetElem::SetElem(SetElem&& obj)
-    : access_(std::move(obj.access_)), expr_(std::move(obj.expr_)) {}
 SetElem& SetElem::operator=(const SetElem& obj) {
   Stmt::operator=(obj);
   access_ = std::make_unique<Access>(*obj.access_);
   expr_ = obj.expr_->Clone();
-  return *this;
-}
-SetElem& SetElem::operator=(SetElem&& obj) {
-  Stmt::operator=(std::move(obj));
-  access_ = std::move(obj.access_);
-  expr_ = std::move(obj.expr_);
   return *this;
 }
 SetElem::~SetElem() = default;

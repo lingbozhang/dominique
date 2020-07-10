@@ -12,6 +12,7 @@ cc_library(
       "type.h"
   PUBLIC_DEPS 
       "token"
+      ${llvm_libs}
 )
  
 cc_library(

@@ -18,37 +18,28 @@ Contributor(s):
 #include "src/lexer/token.h"
 #include "src/parser/expr/expr.h"
 #include "src/symbol/type.h"
+#include "llvm/IR/LLVMContext.h"
 
 namespace intellgraph {
 namespace inter {
 
 class Constant : public Expr {
  public:
-  static Constant True() {
-    static const Constant kTrue = Constant(lexer::Word::True().Clone(),
-                                           symbols::Type::Bool().CloneType());
-    return kTrue;
-  }
-  static Constant False() {
-    static const Constant kFalse = Constant(lexer::Word::False().Clone(),
-                                            symbols::Type::Bool().CloneType());
-    return kFalse;
-  }
+   static Constant True();
+   static Constant False();
 
-  Constant(std::unique_ptr<lexer::Token> token,
-           std::unique_ptr<symbols::Type> type);
-  Constant(int i);
-  Constant(const Constant& constant);
-  Constant(Constant&& constant);
-  Constant& operator=(const Constant& constant);
-  Constant& operator=(Constant&& constant);
-  ~Constant() override;
+   Constant(std::unique_ptr<lexer::Token> token,
+            std::unique_ptr<symbols::Type> type);
+   Constant(const Constant &constant);
+   Constant &operator=(const Constant &constant);
+   Constant(int i);
+   ~Constant() override;
 
-  bool operator==(const Constant& constant) const;
-  bool operator!=(const Constant& constant) const;
+   bool operator==(const Constant &constant) const;
+   bool operator!=(const Constant &constant) const;
 
-  std::unique_ptr<Expr> Clone() const final {
-    return std::make_unique<Constant>(*this);
+   std::unique_ptr<Expr> Clone() const final {
+     return std::make_unique<Constant>(*this);
   }
 
   void Jumping(int t, int f) override;

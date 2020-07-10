@@ -23,16 +23,14 @@ namespace inter {
 
 class Rel : public Logical {
  public:
-  Rel(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-      std::unique_ptr<Expr> expr2);
-  Rel(const Rel& obj);
-  Rel(Rel&& obj);
-  Rel& operator=(const Rel& obj);
-  Rel& operator=(Rel&& obj);
-  ~Rel() override;
+   Rel(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+       std::unique_ptr<Expr> expr2);
+   Rel(const Rel &obj);
+   Rel &operator=(const Rel &obj);
+   ~Rel() override;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<Rel>(*this);
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<Rel>(*this);
   }
 
   void Jumping(int t, int f) override;

@@ -24,9 +24,7 @@ class Seq : public Stmt {
  public:
   Seq(std::unique_ptr<Stmt> stmt1, std::unique_ptr<Stmt> stmt2);
   Seq(const Seq& obj);
-  Seq(Seq&& obj);
   Seq& operator=(const Seq& obj);
-  Seq& operator=(Seq&& obj);
   ~Seq() override;
 
   std::unique_ptr<Stmt> Clone() const override {

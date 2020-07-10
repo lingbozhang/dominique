@@ -24,9 +24,7 @@ class Array : public Type {
  public:
   Array(std::unique_ptr<Type> type, int size);
   Array(const Array& array);
-  Array(Array&& array);
   Array& operator=(const Array& array);
-  Array& operator=(Array&& array);
   ~Array() override;
 
   bool operator==(const Array& array) const;

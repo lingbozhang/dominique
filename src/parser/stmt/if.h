@@ -25,9 +25,7 @@ class If : public Stmt {
  public:
   If(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt);
   If(const If& obj);
-  If(If&& obj);
   If& operator=(const If& obj);
-  If& operator=(If&& obj);
   ~If() override;
 
   std::unique_ptr<Stmt> Clone() const override {

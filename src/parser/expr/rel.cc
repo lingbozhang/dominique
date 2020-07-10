@@ -19,17 +19,10 @@ namespace inter {
 Rel::Rel(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
          std::unique_ptr<Expr> expr2)
     : Logical(std::move(token), std::move(expr1), std::move(expr2)) {}
-Rel::Rel(const Rel& obj)
+Rel::Rel(const Rel &obj)
     : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
-Rel::Rel(Rel&& obj)
-    : Logical(std::move(obj.op_), std::move(obj.expr1_),
-              std::move(obj.expr2_)) {}
-Rel& Rel::operator=(const Rel& obj) {
+Rel &Rel::operator=(const Rel &obj) {
   Logical::operator=(obj);
-  return *this;
-}
-Rel& Rel::operator=(Rel&& obj) {
-  Logical::operator=(std::move(obj));
   return *this;
 }
 Rel::~Rel() = default;

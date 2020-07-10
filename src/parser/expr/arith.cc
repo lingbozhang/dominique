@@ -19,8 +19,7 @@ namespace inter {
 
 Arith::Arith(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
              std::unique_ptr<Expr> expr2)
-    : Op(std::move(token), nullptr),
-      expr1_(std::move(expr1)),
+    : Op(std::move(token), nullptr), expr1_(std::move(expr1)),
       expr2_(std::move(expr2)) {
   symbols::Type type = symbols::Type::Max(*expr1_->type_, *expr2_->type_);
   if (type == symbols::Type::Null()) {
@@ -28,14 +27,15 @@ Arith::Arith(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
   }
   this->type_ = type.CloneType();
 }
-Arith::Arith(const Arith& arith)
+Arith::Arith(const Arith &arith)
     : Op(arith.op_->Clone(), arith.type_->CloneType()),
-      expr1_(arith.expr1_->Clone()),
-      expr2_(arith.expr2_->Clone()) {}
-Arith::Arith(Arith&& arith)
-    : Op(std::move(arith.op_), std::move(arith.type_)),
-      expr1_(std::move(arith.expr1_)),
-      expr2_(std::move(arith.expr2_)) {}
+      expr1_(arith.expr1_->Clone()), expr2_(arith.expr2_->Clone()) {}
+Arith &Arith::operator=(const Arith &arith) {
+  Op::operator=(arith);
+  expr1_ = arith.expr1_->Clone();
+  expr2_ = arith.expr2_->Clone();
+  return *this;
+}
 Arith::~Arith() = default;
 
 bool Arith::operator==(const Arith &obj) const {
@@ -46,7 +46,7 @@ bool Arith::operator==(const Arith &obj) const {
 bool Arith::operator!=(const Arith &obj) const { return !(*this == obj); }
 
 std::unique_ptr<Expr> Arith::Gen() {
-  return std::make_unique<Arith>(this->op_->Clone(), expr1_->Reduce(),
+  return std::make_unique<Arith>(op_->Clone(), expr1_->Reduce(),
                                  expr2_->Reduce());
 }
 

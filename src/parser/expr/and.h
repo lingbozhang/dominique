@@ -24,16 +24,14 @@ namespace inter {
 
 class And : public Logical {
  public:
-  And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-      std::unique_ptr<Expr> expr2);
-  And(const And& obj);
-  And(And&& obj);
-  And& operator=(const And& obj);
-  And& operator=(And&& obj);
-  ~And() override;
+   And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+       std::unique_ptr<Expr> expr2);
+   And(const And &obj);
+   And &operator=(const And &obj);
+   ~And() override;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<And>(*this);
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<And>(*this);
   }
 
   void Jumping(int t, int f) final;

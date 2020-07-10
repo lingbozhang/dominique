@@ -20,18 +20,10 @@ namespace inter {
 While::While() = default;
 While::While(const While& obj)
     : expr_(obj.expr_->Clone()), stmt_(obj.stmt_->Clone()) {}
-While::While(While&& obj)
-    : expr_(std::move(obj.expr_)), stmt_(std::move(obj.stmt_)) {}
 While& While::operator=(const While& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt_ = obj.stmt_->Clone();
-  return *this;
-}
-While& While::operator=(While&& obj) {
-  Stmt::operator=(std::move(obj));
-  expr_ = std::move(obj.expr_);
-  stmt_ = std::move(obj.stmt_);
   return *this;
 }
 While::~While() = default;

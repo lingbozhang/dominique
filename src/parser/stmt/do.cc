@@ -19,17 +19,10 @@ namespace inter {
 
 Do::Do() = default;
 Do::Do(const Do& obj) : expr_(obj.expr_->Clone()), stmt_(obj.stmt_->Clone()) {}
-Do::Do(Do&& obj) : expr_(std::move(obj.expr_)), stmt_(std::move(obj.stmt_)) {}
 Do& Do::operator=(const Do& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt_ = obj.stmt_->Clone();
-  return *this;
-}
-Do& Do::operator=(Do&& obj) {
-  Stmt::operator=(std::move(obj));
-  expr_ = std::move(obj.expr_);
-  stmt_ = std::move(obj.stmt_);
   return *this;
 }
 Do::~Do() = default;

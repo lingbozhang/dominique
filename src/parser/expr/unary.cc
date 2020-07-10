@@ -25,20 +25,12 @@ Unary::Unary(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr)
   }
   this->type_ = type.CloneType();
 }
-Unary::Unary(const Unary& unary)
+Unary::Unary(const Unary &unary)
     : Op(unary.op_->Clone(), unary.type_->CloneType()),
       expr_(unary.expr_->Clone()) {}
-Unary::Unary(Unary&& unary)
-    : Op(std::move(unary.op_), std::move(unary.type_)),
-      expr_(std::move(unary.expr_)) {}
-Unary& Unary::operator=(const Unary& unary) {
+Unary &Unary::operator=(const Unary &unary) {
   Op::operator=(unary);
   expr_ = unary.expr_->Clone();
-  return *this;
-}
-Unary& Unary::operator=(Unary&& unary) {
-  Op::operator=(std::move(unary));
-  expr_ = std::move(unary.expr_);
   return *this;
 }
 Unary::~Unary() = default;

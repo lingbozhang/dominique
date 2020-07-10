@@ -23,31 +23,31 @@ namespace symbols {
 
 TEST(TypeTest, Float) {
   EXPECT_EQ(Type::Float().tag_, lexer::tag::kBasic);
-  EXPECT_EQ(Type::Float().lexeme_, "float");
+  EXPECT_EQ(Type::Float().id_, Type::TypeId::kFloat);
   EXPECT_EQ(Type::Float().width_, 8);
 }
 
 TEST(TypeTest, Int) {
   EXPECT_EQ(Type::Int().tag_, lexer::tag::kBasic);
-  EXPECT_EQ(Type::Int().lexeme_, "int");
+  EXPECT_EQ(Type::Int().id_, Type::TypeId::kInt);
   EXPECT_EQ(Type::Int().width_, 4);
 }
 
 TEST(TypeTest, Char) {
   EXPECT_EQ(Type::Char().tag_, lexer::tag::kBasic);
-  EXPECT_EQ(Type::Char().lexeme_, "char");
+  EXPECT_EQ(Type::Char().id_, Type::TypeId::kChar);
   EXPECT_EQ(Type::Char().width_, 1);
 }
 
 TEST(TypeTest, Bool) {
   EXPECT_EQ(Type::Bool().tag_, lexer::tag::kBasic);
-  EXPECT_EQ(Type::Bool().lexeme_, "bool");
+  EXPECT_EQ(Type::Bool().id_, Type::TypeId::kBool);
   EXPECT_EQ(Type::Bool().width_, 1);
 }
 
 TEST(TypeTest, Null) {
   EXPECT_EQ(Type::Null().tag_, lexer::tag::kBasic);
-  EXPECT_EQ(Type::Null().lexeme_, "null");
+  EXPECT_EQ(Type::Null().id_, Type::TypeId::kNull);
   EXPECT_EQ(Type::Null().width_, 0);
 }
 

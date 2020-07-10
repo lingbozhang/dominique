@@ -23,12 +23,6 @@ Num &Num::operator=(const Num &num) {
   return *this;
 }
 
-Num &Num::operator=(Num &&num) {
-  value_ = num.value_;
-  Token::operator=(std::move(num));
-  return *this;
-}
-
 bool Num::operator==(const Num &num) const {
   return Token::operator==(num) && value_ == num.value_;
 }
@@ -41,17 +35,52 @@ Real &Real::operator=(const Real &real) {
   return *this;
 }
 
-Real &Real::operator=(Real &&real) {
-  value_ = real.value_;
-  Token::operator=(std::move(real));
-  return *this;
-}
-
 bool Real::operator==(const Real &real) const {
   return Token::operator==(real) && value_ == real.value_;
 }
 
 bool Real::operator!=(const Real &real) const { return !(*this == real); }
+
+Word Word::And() {
+  static const Word kAnd = Word("&&", tag::kAnd);
+  return kAnd;
+}
+Word Word::Or() {
+  static const Word kOr = Word("||", tag::kOr);
+  return kOr;
+}
+Word Word::Eq() {
+  static const Word kEq = Word("==", tag::kEq);
+  return kEq;
+}
+Word Word::Ne() {
+  static const Word kNe = Word("!=", tag::kNe);
+  return kNe;
+}
+Word Word::Le() {
+  static const Word kLe = Word("<=", tag::kLe);
+  return kLe;
+}
+Word Word::Ge() {
+  static const Word kGe = Word(">=", tag::kGe);
+  return kGe;
+}
+Word Word::Minus() {
+  static const Word kMinus = Word("minus", tag::kMinus);
+  return kMinus;
+}
+Word Word::True() {
+  static const Word kTrue = Word("true", tag::kTrue);
+  return kTrue;
+}
+Word Word::False() {
+  static const Word kFalse = Word("false", tag::kFalse);
+  return kFalse;
+}
+Word Word::Temp() {
+  static const Word kTemp = Word("t", tag::kTemp);
+  return kTemp;
+}
 
 Word::Word(const std::string &lexeme, int tag) : Token(tag), lexeme_(lexeme) {}
 
@@ -61,12 +90,6 @@ Word::Word(std::string &&lexeme, int tag)
 Word &Word::operator=(const Word &word) {
   Token::operator=(word);
   lexeme_ = word.lexeme_;
-  return *this;
-}
-
-Word &Word::operator=(Word &&word) {
-  lexeme_ = word.lexeme_;
-  Token::operator=(std::move(word));
   return *this;
 }
 

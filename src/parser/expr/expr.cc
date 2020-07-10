@@ -20,18 +20,11 @@ namespace inter {
 Expr::Expr(std::unique_ptr<lexer::Token> op,
            std::unique_ptr<symbols::Type> type)
     : op_(std::move(op)), type_(std::move(type)) {}
-Expr::Expr(const Expr& expr)
+Expr::Expr(const Expr &expr)
     : op_(expr.op_->Clone()), type_(expr.type_->CloneType()) {}
-Expr::Expr(Expr&& expr)
-    : op_(std::move(expr.op_)), type_(std::move(expr.type_)) {}
-Expr& Expr::operator=(const Expr& expr) {
+Expr &Expr::operator=(const Expr &expr) {
   op_ = expr.op_->Clone();
   type_ = expr.type_->CloneType();
-  return *this;
-}
-Expr& Expr::operator=(Expr&& expr) {
-  op_ = std::move(expr.op_);
-  type_ = std::move(expr.type_);
   return *this;
 }
 Expr::~Expr() = default;
@@ -41,9 +34,18 @@ bool Expr::operator==(const Expr& expr) const {
 }
 bool Expr::operator!=(const Expr& expr) const { return !(*this == expr); }
 
-std::unique_ptr<Expr> Expr::Gen() { return std::make_unique<Expr>(*this); }
+std::unique_ptr<Expr> Expr::Gen() {
+  return std::make_unique<Expr>(this->op_->Clone(), this->type_->CloneType());
+}
 
-std::unique_ptr<Expr> Expr::Reduce() { return std::make_unique<Expr>(*this); }
+std::unique_ptr<Expr> Expr::Reduce() {
+  return std::make_unique<Expr>(this->op_->Clone(), this->type_->CloneType());
+}
+
+std::unique_ptr<Expr> Expr::Clone() const {
+  return std::make_unique<Expr>(op_->Clone(), type_->CloneType());
+}
+std::string Expr::ToString() const { return op_->ToString(); }
 
 void Expr::Jumping(int t, int f) { EmitJumps(this->ToString(), t, f); }
 void Expr::EmitJumps(const std::string& test, int t, int f) {

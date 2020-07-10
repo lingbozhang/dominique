@@ -21,18 +21,10 @@ Seq::Seq(std::unique_ptr<Stmt> stmt1, std::unique_ptr<Stmt> stmt2)
     : stmt1_(std::move(stmt1)), stmt2_(std::move(stmt2)) {}
 Seq::Seq(const Seq& obj)
     : stmt1_(obj.stmt1_->Clone()), stmt2_(obj.stmt2_->Clone()) {}
-Seq::Seq(Seq&& obj)
-    : stmt1_(std::move(obj.stmt1_)), stmt2_(std::move(obj.stmt2_)) {}
 Seq& Seq::operator=(const Seq& obj) {
   Stmt::operator=(obj);
   stmt1_ = obj.stmt1_->Clone();
   stmt2_ = obj.stmt2_->Clone();
-  return *this;
-}
-Seq& Seq::operator=(Seq&& obj) {
-  Stmt::operator=(std::move(obj));
-  stmt1_ = std::move(obj.stmt1_);
-  stmt2_ = std::move(obj.stmt2_);
   return *this;
 }
 Seq::~Seq() = default;

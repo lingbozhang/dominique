@@ -18,25 +18,22 @@ Contributor(s):
 #include <memory>
 
 #include "src/parser/expr/expr.h"
-#include "src/parser/expr/temp.h"
 
 namespace intellgraph {
 namespace inter {
 
 class Op : public Expr {
  public:
-  Op(std::unique_ptr<lexer::Token> token, std::unique_ptr<symbols::Type> type);
-  Op(const Op& op);
-  Op(Op&& op);
-  Op& operator=(const Op& op);
-  Op& operator=(Op&& op);
-  ~Op() override;
+   Op(std::unique_ptr<lexer::Token> token, std::unique_ptr<symbols::Type> type);
+   Op(const Op &op);
+   Op &operator=(const Op &op);
+   ~Op() override;
 
-  bool operator==(const Op &op) const;
-  bool operator!=(const Op &op) const;
+   bool operator==(const Op &op) const;
+   bool operator!=(const Op &op) const;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<Op>(*this);
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<Op>(*this);
   }
 
   std::unique_ptr<Expr> Reduce() final;

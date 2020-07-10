@@ -24,19 +24,17 @@ namespace inter {
 
 class Id : public Expr {
  public:
-  Id(std::unique_ptr<lexer::Word> token, std::unique_ptr<symbols::Type> type,
-     int offset);
-  Id(const Id& id);
-  Id(Id&& id);
-  Id& operator=(const Id& id);
-  Id& operator=(Id&& id);
-  ~Id() override;
+   Id(std::unique_ptr<lexer::Word> token, std::unique_ptr<symbols::Type> type,
+      int offset);
+   Id(const Id &id);
+   Id &operator=(const Id &id);
+   ~Id() override;
 
-  bool operator==(const Id& id) const;
-  bool operator!=(const Id& id) const;
+   bool operator==(const Id &id) const;
+   bool operator!=(const Id &id) const;
 
-  std::unique_ptr<Expr> Clone() const final {
-    return std::make_unique<Id>(*this);
+   std::unique_ptr<Expr> Clone() const final {
+     return std::make_unique<Id>(*this);
   }
 
   std::unique_ptr<Id> CloneId() const { return std::make_unique<Id>(*this); }

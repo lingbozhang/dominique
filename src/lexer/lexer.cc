@@ -24,18 +24,19 @@ namespace intellgraph {
 namespace lexer {
 
 Lexer::Lexer() {
-  Reserve(std::make_unique<Word>("if", tag::kIf));
-  Reserve(std::make_unique<Word>("else", tag::kElse));
-  Reserve(std::make_unique<Word>("while", tag::kWhile));
-  Reserve(std::make_unique<Word>("do", tag::kDo));
-  Reserve(std::make_unique<Word>("break", tag::kBreak));
-  Reserve(std::make_unique<Word>(Word::True()));
-  Reserve(std::make_unique<Word>(Word::False()));
+  Reserve("if", std::make_unique<Word>("if", tag::kIf));
+  Reserve("else", std::make_unique<Word>("else", tag::kElse));
+  Reserve("while", std::make_unique<Word>("while", tag::kWhile));
+  Reserve("do", std::make_unique<Word>("do", tag::kDo));
+  Reserve("break", std::make_unique<Word>("break", tag::kBreak));
+  Reserve("true", std::make_unique<Word>(Word::True()));
+  Reserve("false", std::make_unique<Word>(Word::False()));
   // types
-  Reserve(static_cast_unique_ptr<Word>(symbols::Type::Int().Clone()));
-  Reserve(static_cast_unique_ptr<Word>(symbols::Type::Float().Clone()));
-  Reserve(static_cast_unique_ptr<Word>(symbols::Type::Char().Clone()));
-  Reserve(static_cast_unique_ptr<Word>(symbols::Type::Bool().Clone()));
+  Reserve("int", static_cast_unique_ptr<Word>(symbols::Type::Int().Clone()));
+  Reserve("float",
+          static_cast_unique_ptr<Word>(symbols::Type::Float().Clone()));
+  Reserve("char", static_cast_unique_ptr<Word>(symbols::Type::Char().Clone()));
+  Reserve("bool", static_cast_unique_ptr<Word>(symbols::Type::Bool().Clone()));
   //
   str_iter_ = str_.begin();
 }
@@ -138,8 +139,8 @@ std::unique_ptr<Token> Lexer::Scan() {
   return token;
 }
 
-void Lexer::Reserve(std::unique_ptr<Word> wd) {
-  words.try_emplace(wd->lexeme_, std::move(wd));
+void Lexer::Reserve(const std::string &lexeme, std::unique_ptr<Word> wd) {
+  words.try_emplace(lexeme, std::move(wd));
 }
 
 bool Lexer::ReadCh() {
@@ -152,7 +153,8 @@ bool Lexer::ReadCh() {
   return false;
 }
 
-int Lexer::line_num_ = 1;
+int Lexer::line_num_ = 0;
+int Lexer::get_line_number() { return Lexer::line_num_ + 1; }
 
 }  // namespace lexer
 }  // namespace intellgraph

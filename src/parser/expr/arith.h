@@ -24,20 +24,18 @@ namespace inter {
 
 class Arith : public Op {
  public:
-  Arith(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-        std::unique_ptr<Expr> expr2);
-  Arith(const Arith& arith);
-  Arith(Arith&& arith);
-  Arith& operator=(const Arith& arith);
-  Arith& operator=(Arith&& arith);
-  ~Arith() override;
+   Arith(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+         std::unique_ptr<Expr> expr2);
+   Arith(const Arith &arith);
+   Arith &operator=(const Arith &arith);
+   ~Arith() override;
 
-  bool operator==(const Arith &obj) const;
-  bool operator!=(const Arith &obj) const;
+   bool operator==(const Arith &obj) const;
+   bool operator!=(const Arith &obj) const;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<Arith>(*this);
-  }
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<Arith>(*this);
+   }
 
   std::string ToString() const override {
     return expr1_->ToString() + " " + this->op_->ToString() + " " +

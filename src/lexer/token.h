@@ -29,9 +29,7 @@ class Token {
  public:
   Token(int t) : tag_(t) {}
   Token(const Token &token) = default;
-  Token(Token &&token) = default;
   Token &operator=(const Token &token) = default;
-  Token &operator=(Token &&token) = default;
   virtual ~Token() = default;
 
   bool operator==(const Token &token) const { return tag_ == token.tag_; }
@@ -53,9 +51,7 @@ class Num : public Token {
  public:
   Num(int value) : Token(tag::kNum), value_(value) {}
   Num(const Num &num) = default;
-  Num(Num &&num) = default;
   Num &operator=(const Num &num);
-  Num &operator=(Num &&num);
   ~Num() override = default;
 
   bool operator==(const Num &num) const;
@@ -74,9 +70,7 @@ class Real : public Token {
  public:
   Real(float value) : Token(tag::kReal), value_(value) {}
   Real(const Real &real) = default;
-  Real(Real &&real) = default;
   Real &operator=(const Real &real);
-  Real &operator=(Real &&real);
   ~Real() override = default;
 
   bool operator==(const Real &real) const;
@@ -93,62 +87,30 @@ class Real : public Token {
 
 class Word : public Token {
  public:
-  static Word And() {
-    static const Word kAnd = Word("&&", tag::kAnd);
-    return kAnd;
-  }
-  static Word Or() {
-    static const Word kOr = Word("||", tag::kOr);
-    return kOr;
-  }
-  static Word Eq() {
-    static const Word kEq = Word("==", tag::kEq);
-    return kEq;
-  }
-  static Word Ne() {
-    static const Word kNe = Word("!=", tag::kNe);
-    return kNe;
-  }
-  static Word Le() {
-    static const Word kLe = Word("<=", tag::kLe);
-    return kLe;
-  }
-  static Word Ge() {
-    static const Word kGe = Word(">=", tag::kGe);
-    return kGe;
-  }
-  static Word Minus() {
-    static const Word kMinus = Word("minus", tag::kMinus);
-    return kMinus;
-  }
-  static Word True() {
-    static const Word kTrue = Word("true", tag::kTrue);
-    return kTrue;
-  }
-  static Word False() {
-    static const Word kFalse = Word("false", tag::kFalse);
-    return kFalse;
-  }
-  static Word Temp() {
-    static const Word kTemp = Word("t", tag::kTemp);
-    return kTemp;
-  }
+   static Word And();
+   static Word Or();
+   static Word Eq();
+   static Word Ne();
+   static Word Le();
+   static Word Ge();
+   static Word Minus();
+   static Word True();
+   static Word False();
+   static Word Temp();
 
-  Word(const std::string &lexeme, int tag);
-  Word(std::string &&lexeme, int tag);
-  Word(const Word &word) = default;
-  Word(Word &&word) = default;
-  Word &operator=(const Word &word);
-  Word &operator=(Word &&word);
-  ~Word() override;
+   Word(const std::string &lexeme, int tag);
+   Word(std::string &&lexeme, int tag);
+   Word(const Word &word) = default;
+   Word &operator=(const Word &word);
+   ~Word() override;
 
-  bool operator==(const Word &word) const;
-  bool operator!=(const Word &word) const;
-  // Required by the map container
-  bool operator<(const Word &word) const;
+   bool operator==(const Word &word) const;
+   bool operator!=(const Word &word) const;
+   // Required by the map container
+   bool operator<(const Word &word) const;
 
-  std::unique_ptr<Token> Clone() const override {
-    return std::make_unique<Word>(*this);
+   std::unique_ptr<Token> Clone() const override {
+     return std::make_unique<Word>(*this);
   }
 
   std::string ToString() const override { return lexeme_; }

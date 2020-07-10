@@ -23,19 +23,17 @@ namespace inter {
 
 class Logical : public Expr {
  public:
-  Logical(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-          std::unique_ptr<Expr> expr2);
-  Logical(const Logical& logical);
-  Logical(Logical&& logical);
-  Logical& operator=(const Logical& logical);
-  Logical& operator=(Logical&& logical);
-  ~Logical() override;
+   Logical(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+           std::unique_ptr<Expr> expr2);
+   Logical(const Logical &logical);
+   Logical &operator=(const Logical &logical);
+   ~Logical() override;
 
-  bool operator==(const Logical &obj) const;
-  bool operator!=(const Logical &obj) const;
+   bool operator==(const Logical &obj) const;
+   bool operator!=(const Logical &obj) const;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<Logical>(*this);
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<Logical>(*this);
   }
 
   std::string ToString() const override {

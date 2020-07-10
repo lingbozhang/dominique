@@ -24,16 +24,14 @@ namespace inter {
 
 class Or : public Logical {
  public:
-  Or(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-     std::unique_ptr<Expr> expr2);
-  Or(const Or& obj);
-  Or(Or&& obj);
-  Or& operator=(const Or& obj);
-  Or& operator=(Or&& obj);
-  ~Or() override;
+   Or(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+      std::unique_ptr<Expr> expr2);
+   Or(const Or &obj);
+   Or &operator=(const Or &obj);
+   ~Or() override;
 
-  std::unique_ptr<Expr> Clone() const override {
-    return std::make_unique<Or>(*this);
+   std::unique_ptr<Expr> Clone() const override {
+     return std::make_unique<Or>(*this);
   }
 
   void Jumping(int t, int f) final;

@@ -21,26 +21,14 @@ Access::Access(std::unique_ptr<Id> array, std::unique_ptr<Expr> index,
                std::unique_ptr<symbols::Type> type)
     : Op(std::make_unique<lexer::Word>("[]", lexer::tag::kIndex),
          std::move(type)),
-      array_(std::move(array)),
-      index_(std::move(index)) {}
-Access::Access(const Access& obj)
-    : Op(obj.op_->Clone(), obj.type_->CloneType()),
-      array_(obj.array_->CloneId()),
-      index_(obj.index_->Clone()) {}
-Access::Access(Access&& obj)
-    : Op(std::move(obj.op_), std::move(obj.type_)),
-      array_(std::move(obj.array_)),
-      index_(std::move(obj.index_)) {}
-Access& Access::operator=(const Access& obj) {
-  Op::operator=(obj);
-  array_ = obj.array_->CloneId();
-  index_ = obj.index_->Clone();
-  return *this;
-}
-Access& Access::operator=(Access&& obj) {
-  Op::operator=(std::move(obj));
-  array_ = std::move(obj.array_);
-  index_ = std::move(obj.index_);
+      array_(std::move(array)), index_(std::move(index)) {}
+Access::Access(const Access &access)
+    : Op(access.op_->Clone(), access.type_->CloneType()),
+      array_(access.array_->CloneId()), index_(access.index_->Clone()) {}
+Access &Access::operator=(const Access &access) {
+  Op::operator=(access);
+  array_ = access.array_->CloneId();
+  index_ = access.index_->Clone();
   return *this;
 }
 Access::~Access() = default;
@@ -53,7 +41,7 @@ bool Access::operator!=(const Access &obj) const { return !(*this == obj); }
 
 std::unique_ptr<Expr> Access::Gen() {
   return std::make_unique<Access>(array_->CloneId(), index_->Reduce(),
-                                  this->type_->CloneType());
+                                  type_->CloneType());
 }
 
 void Access::Jumping(int t, int f) {

@@ -22,25 +22,17 @@ namespace inter {
 
 class Stmt : public Node {
  public:
-  static Stmt Null() {
-    static const Stmt kNull = Stmt(-1);
-    return kNull;
-  }
-  static Stmt Enclosing() {
-    static const Stmt kEnclosing = Stmt::Null();
-    return kEnclosing;
-  }
+   static Stmt Null();
+   static Stmt Enclosing();
 
-  Stmt() = default;
-  explicit Stmt(int after);
-  Stmt(const Stmt& obj);
-  Stmt(Stmt&& obj);
-  Stmt& operator=(const Stmt& obj);
-  Stmt& operator=(Stmt&& obj);
-  ~Stmt() override;
+   Stmt() = default;
+   explicit Stmt(int after);
+   Stmt(const Stmt &obj);
+   Stmt &operator=(const Stmt &obj);
+   ~Stmt() override;
 
-  virtual std::unique_ptr<Stmt> Clone() const {
-    return std::make_unique<Stmt>(*this);
+   virtual std::unique_ptr<Stmt> Clone() const {
+     return std::make_unique<Stmt>(*this);
   }
 
   bool operator==(const Stmt& stmt) { return after_ == stmt.after_; }

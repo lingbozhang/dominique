@@ -13,20 +13,16 @@ Contributor(s):
     Lingbo Zhang <lingboz2015@gmail.com>
 ==============================================================================*/
 #include "src/parser/expr/op.h"
+#include "src/parser/expr/temp.h"
 
 namespace intellgraph {
 namespace inter {
 
 Op::Op(std::unique_ptr<lexer::Token> token, std::unique_ptr<symbols::Type> type)
     : Expr(std::move(token), std::move(type)) {}
-Op::Op(const Op& op) : Expr(op.op_->Clone(), op.type_->CloneType()) {}
-Op::Op(Op&& op) : Expr(std::move(op.op_), std::move(op.type_)) {}
+Op::Op(const Op &op) : Expr(op.op_->Clone(), op.type_->CloneType()) {}
 Op& Op::operator=(const Op& op) {
   Expr::operator=(op);
-  return *this;
-}
-Op& Op::operator=(Op&& op) {
-  Expr::operator=(std::move(op));
   return *this;
 }
 Op::~Op() = default;

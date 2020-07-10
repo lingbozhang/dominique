@@ -24,17 +24,10 @@ If::If(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt)
   }
 }
 If::If(const If& obj) : expr_(obj.expr_->Clone()), stmt_(obj.stmt_->Clone()) {}
-If::If(If&& obj) : expr_(std::move(obj.expr_)), stmt_(std::move(obj.stmt_)) {}
 If& If::operator=(const If& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt_ = obj.stmt_->Clone();
-  return *this;
-}
-If& If::operator=(If&& obj) {
-  Stmt::operator=(std::move(obj));
-  expr_ = std::move(obj.expr_);
-  stmt_ = std::move(obj.stmt_);
   return *this;
 }
 If::~If() = default;

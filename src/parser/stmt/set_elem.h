@@ -28,9 +28,7 @@ class SetElem : public Stmt {
  public:
   SetElem(std::unique_ptr<Access> access, std::unique_ptr<Expr> expr);
   SetElem(const SetElem& obj);
-  SetElem(SetElem&& obj);
   SetElem& operator=(const SetElem& obj);
-  SetElem& operator=(SetElem&& obj);
   ~SetElem() override;
 
   bool operator==(const SetElem &obj) const;

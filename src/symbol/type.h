@@ -18,71 +18,50 @@ Contributor(s):
 #include <string>
 
 #include "src/lexer/token.h"
+#include "llvm/IR/LLVMContext.h"
+#include "llvm/IR/Type.h"
 
 namespace intellgraph {
 namespace symbols {
 
 class Type : public lexer::Word {
  public:
-  static Type Int() {
-    static const Type kInt = Type("int", lexer::tag::kBasic, 4);
-    return kInt;
-  }
-  static Type Float() {
-    static const Type kFloat = Type("float", lexer::tag::kBasic, 8);
-    return kFloat;
-  }
-  static Type Char() {
-    static const Type kChar = Type("char", lexer::tag::kBasic, 1);
-    return kChar;
-  }
-  static Type Bool() {
-    static const Type kBool = Type("bool", lexer::tag::kBasic, 1);
-    return kBool;
-  }
-  static Type Null() {
-    static const Type kNull = Type("null", lexer::tag::kBasic, 0);
-    return kNull;
-  }
+   // Primitive types
+   enum TypeId { kUndefined = 0, kInt, kFloat, kChar, kBool, kNull };
+   static Type Int();
+   static Type Float();
+   static Type Char();
+   static Type Bool();
+   static Type Null();
 
-  static bool IsNumeric(const Type& p) {
-    if (p == Type::Char() || p == Type::Int() || p == Type::Float()) {
-      return true;
-    }
-    return false;
-  }
+   static llvm::IntegerType *GenIntTy(llvm::LLVMContext &context);
+   static llvm::Type *GenFloatTy(llvm::LLVMContext &context);
+   static llvm::IntegerType *GenCharTy(llvm::LLVMContext &context);
+   static llvm::IntegerType *GenBoolTy(llvm::LLVMContext &context);
 
-  static Type Max(const Type& lf, const Type& rt) {
-    if (!IsNumeric(lf) || !IsNumeric(rt)) {
-      return Type::Null();
-    } else if (lf == Type::Float() || rt == Type::Float()) {
-      return Type::Float();
-    } else if (lf == Type::Int() || rt == Type::Int()) {
-      return Type::Int();
-    } else {
-      return Type::Char();
-    }
-  }
+   static bool IsNumeric(const Type &p);
+   static Type Max(const Type &lf, const Type &rt);
 
-  Type(const std::string& lexeme, int tag, int width);
-  Type(std::string&& lexeme, int tag, int width);
-  Type(const Type& type) = default;
-  Type(Type&& type) = default;
-  Type& operator=(const Type& type);
-  Type& operator=(Type&& type);
-  ~Type() override;
+   Type(TypeId id);
+   Type(const std::string &lexeme, int tag, int width);
+   Type(const Type &type);
+   Type &operator=(const Type &type);
+   ~Type() override;
 
-  bool operator==(const Type& type) const;
-  bool operator!=(const Type& type) const;
+   bool operator==(const Type &type) const;
+   bool operator!=(const Type &type) const;
 
-  std::unique_ptr<Token> Clone() const override {
-    return std::make_unique<Type>(*this);
-  }
+   std::unique_ptr<Token> Clone() const override {
+     return std::make_unique<Type>(*this);
+   }
 
   virtual std::unique_ptr<Type> CloneType() const {
     return std::make_unique<Type>(*this);
   }
 
+  TypeId GetTypeId() const { return id_; }
+
+  TypeId id_;
   int width_;
 };
 

@@ -22,8 +22,7 @@ namespace inter {
 
 Logical::Logical(std::unique_ptr<lexer::Token> token,
                  std::unique_ptr<Expr> expr1, std::unique_ptr<Expr> expr2)
-    : Expr(std::move(token), nullptr),
-      expr1_(std::move(expr1)),
+    : Expr(std::move(token), nullptr), expr1_(std::move(expr1)),
       expr2_(std::move(expr2)) {
   std::unique_ptr<symbols::Type> type =
       this->Check(expr1_->type_.get(), expr2_->type_.get());
@@ -32,24 +31,13 @@ Logical::Logical(std::unique_ptr<lexer::Token> token,
   }
   this->type_ = type->CloneType();
 }
-Logical::Logical(const Logical& logical)
+Logical::Logical(const Logical &logical)
     : Expr(logical.op_->Clone(), logical.type_->CloneType()),
-      expr1_(logical.expr1_->Clone()),
-      expr2_(logical.expr2_->Clone()) {}
-Logical::Logical(Logical&& logical)
-    : Expr(std::move(logical.op_), std::move(logical.type_)),
-      expr1_(std::move(logical.expr1_)),
-      expr2_(std::move(logical.expr2_)) {}
-Logical& Logical::operator=(const Logical& logical) {
+      expr1_(logical.expr1_->Clone()), expr2_(logical.expr2_->Clone()) {}
+Logical &Logical::operator=(const Logical &logical) {
   Expr::operator=(logical);
   expr1_ = logical.expr1_->Clone();
   expr2_ = logical.expr2_->Clone();
-  return *this;
-}
-Logical& Logical::operator=(Logical&& logical) {
-  Expr::operator=(std::move(logical));
-  expr1_ = std::move(logical.expr1_);
-  expr2_ = std::move(logical.expr2_);
   return *this;
 }
 Logical::~Logical() = default;

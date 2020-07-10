@@ -20,17 +20,10 @@ namespace inter {
 Or::Or(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
        std::unique_ptr<Expr> expr2)
     : Logical(std::move(token), std::move(expr1), std::move(expr2)) {}
-Or::Or(const Or& obj)
+Or::Or(const Or &obj)
     : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
-Or::Or(Or&& obj)
-    : Logical(std::move(obj.op_), std::move(obj.expr1_),
-              std::move(obj.expr2_)) {}
-Or& Or::operator=(const Or& obj) {
+Or &Or::operator=(const Or &obj) {
   Logical::operator=(obj);
-  return *this;
-}
-Or& Or::operator=(Or&& obj) {
-  Logical::operator=(std::move(obj));
   return *this;
 }
 Or::~Or() = default;

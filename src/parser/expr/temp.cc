@@ -21,7 +21,7 @@ int Temp::count_ = 0;
 
 Temp::Temp(std::unique_ptr<symbols::Type> type)
     : Expr(lexer::Word::Temp().Clone(), std::move(type)) {
-  number_ = ++count_;
+  number_ = ++Temp::count_;
 }
 
 }  // namespace inter

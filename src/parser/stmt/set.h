@@ -26,9 +26,7 @@ class Set : public Stmt {
  public:
   Set(std::unique_ptr<Id> id, std::unique_ptr<Expr> expr);
   Set(const Set& obj);
-  Set(Set&& obj);
   Set& operator=(const Set& obj);
-  Set& operator=(Set&& obj);
   ~Set() override;
 
   bool operator==(const Set &obj) const;

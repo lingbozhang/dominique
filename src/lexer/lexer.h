@@ -27,25 +27,28 @@ namespace lexer {
 
 class Lexer {
  public:
-  static int line_num_;
+   static int get_line_number();
 
-  Lexer();
-  ~Lexer() = default;
+   Lexer();
+   Lexer(const Lexer &) = delete;
+   Lexer &operator=(const Lexer &) = delete;
+   ~Lexer() = default;
 
-  void ReadCodes(const std::string& codes);
-  std::unique_ptr<Token> Scan();
-
-  static int get_line_number() { return line_num_; }
+   void ReadCodes(const std::string &codes);
+   std::unique_ptr<Token> Scan();
 
  private:
-  void Reserve(std::unique_ptr<Word> wd);
-  bool ReadCh();
-  bool ReadCh(char c);
+   // Zero initialization
+   static int line_num_;
 
-  char peek_ = ' ';
-  std::string str_;
-  std::string::iterator str_iter_;
-  std::map<std::string, std::unique_ptr<Word>> words;
+   void Reserve(const std::string &lexeme, std::unique_ptr<Word> wd);
+   bool ReadCh();
+   bool ReadCh(char c);
+
+   char peek_ = ' ';
+   std::string str_;
+   std::string::iterator str_iter_;
+   std::map<std::string, std::unique_ptr<Word>> words;
 };
 
 }  // namespace lexer

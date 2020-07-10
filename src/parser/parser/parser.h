@@ -23,6 +23,9 @@ Contributor(s):
 #include "src/parser/stmt/stmt.h"
 #include "src/symbol/env.h"
 #include "src/symbol/type.h"
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/IR/LLVMContext.h"
+#include "llvm/IR/Module.h"
 #include "gtest/gtest_prod.h"
 
 namespace intellgraph {
@@ -51,6 +54,7 @@ public:
   std::unique_ptr<inter::Expr> Factor();
 
 private:
+
   void Move();
   void Error(const std::string &str);
   void Match(int t);
@@ -75,6 +79,10 @@ private:
   void Decls();
   std::unique_ptr<symbols::Type> Dims(std::unique_ptr<symbols::Type> p);
   std::unique_ptr<inter::Access> Offset(const inter::Id *a);
+
+  std::unique_ptr<llvm::LLVMContext> llvm_context_;
+  std::unique_ptr<llvm::IRBuilder<>> llvm_builder_;
+  std::unique_ptr<llvm::Module> llvm_module_;
 
   std::unique_ptr<lexer::Lexer> lex_;
   std::unique_ptr<lexer::Token> look_;

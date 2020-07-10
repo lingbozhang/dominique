@@ -30,22 +30,11 @@ Else::Else(const Else& obj)
     : expr_(obj.expr_->Clone()),
       stmt1_(obj.stmt1_->Clone()),
       stmt2_(obj.stmt2_->Clone()) {}
-Else::Else(Else&& obj)
-    : expr_(std::move(obj.expr_)),
-      stmt1_(std::move(obj.stmt1_)),
-      stmt2_(std::move(obj.stmt2_)) {}
 Else& Else::operator=(const Else& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt1_ = obj.stmt1_->Clone();
   stmt2_ = obj.stmt2_->Clone();
-  return *this;
-}
-Else& Else::operator=(Else&& obj) {
-  Stmt::operator=(obj);
-  expr_ = std::move(obj.expr_);
-  stmt1_ = std::move(obj.stmt1_);
-  stmt2_ = std::move(obj.stmt2_);
   return *this;
 }
 Else::~Else() = default;

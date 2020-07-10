@@ -25,9 +25,7 @@ class While : public Stmt {
  public:
   While();
   While(const While& obj);
-  While(While&& obj);
   While& operator=(const While& obj);
-  While& operator=(While&& obj);
   ~While() override;
 
   std::unique_ptr<Stmt> Clone() const override {

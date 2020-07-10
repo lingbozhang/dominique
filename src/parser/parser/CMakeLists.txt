@@ -14,11 +14,14 @@ cc_library(
       "token"
       "stmt"
       "symbol"
+      ${llvm_libs}
 )
 
 
 cc_test(
   NAME "parser_unittests"
   SRCS "parser_test.cc"
-  DEPS "parser"
+  DEPS 
+      "parser"
+      ${llvm_libs}
 )

@@ -20,19 +20,12 @@ namespace inter {
 Id::Id(std::unique_ptr<lexer::Word> token, std::unique_ptr<symbols::Type> type,
        int offset)
     : Expr(std::move(token), std::move(type)), offset_(offset) {}
-Id::Id(const Id& id)
-    : Expr(id.op_->Clone(), id.type_->CloneType()), offset_(id.offset_) {}
-Id::Id(Id&& id)
-    : Expr(std::move(id.op_), std::move(id.type_)),
-      offset_(std::move(id.offset_)) {}
+Id::Id(const Id &id)
+    : Expr(id.op_->Clone(), id.type_->CloneType()),
+      offset_(id.offset_) {}
 Id& Id::operator=(const Id& id) {
   Expr::operator=(id);
   offset_ = id.offset_;
-  return *this;
-}
-Id& Id::operator=(Id&& id) {
-  Expr::operator=(std::move(id));
-  offset_ = std::move(id.offset_);
   return *this;
 }
 Id::~Id() = default;
