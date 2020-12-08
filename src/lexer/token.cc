@@ -41,43 +41,52 @@ bool Real::operator==(const Real &real) const {
 
 bool Real::operator!=(const Real &real) const { return !(*this == real); }
 
-Word Word::And() {
+const Word &Word::And() {
   static const Word kAnd = Word("&&", tag::kAnd);
   return kAnd;
 }
-Word Word::Or() {
+
+const Word &Word::Or() {
   static const Word kOr = Word("||", tag::kOr);
   return kOr;
 }
-Word Word::Eq() {
+
+const Word &Word::Eq() {
   static const Word kEq = Word("==", tag::kEq);
   return kEq;
 }
-Word Word::Ne() {
+
+const Word &Word::Ne() {
   static const Word kNe = Word("!=", tag::kNe);
   return kNe;
 }
-Word Word::Le() {
+
+const Word &Word::Le() {
   static const Word kLe = Word("<=", tag::kLe);
   return kLe;
 }
-Word Word::Ge() {
+
+const Word &Word::Ge() {
   static const Word kGe = Word(">=", tag::kGe);
   return kGe;
 }
-Word Word::Minus() {
+
+const Word &Word::Minus() {
   static const Word kMinus = Word("minus", tag::kMinus);
   return kMinus;
 }
-Word Word::True() {
+
+const Word &Word::True() {
   static const Word kTrue = Word("true", tag::kTrue);
   return kTrue;
 }
-Word Word::False() {
+
+const Word &Word::False() {
   static const Word kFalse = Word("false", tag::kFalse);
   return kFalse;
 }
-Word Word::Temp() {
+
+const Word &Word::Temp() {
   static const Word kTemp = Word("t", tag::kTemp);
   return kTemp;
 }

@@ -32,7 +32,7 @@ class Break : public Stmt {
 
   void Gen(int b, int a) override;
 
-  std::unique_ptr<Stmt> stmt_;
+  const Stmt *stmt_;
 };
 
 }  // namespace inter

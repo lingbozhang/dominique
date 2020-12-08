@@ -24,22 +24,22 @@ namespace intellgraph {
 namespace inter {
 
 class Constant : public Expr {
- public:
-   static Constant True();
-   static Constant False();
+public:
+  static const Constant &True();
+  static const Constant &False();
 
-   Constant(std::unique_ptr<lexer::Token> token,
-            std::unique_ptr<symbols::Type> type);
-   Constant(const Constant &constant);
-   Constant &operator=(const Constant &constant);
-   Constant(int i);
-   ~Constant() override;
+  Constant(std::unique_ptr<lexer::Token> token,
+           std::unique_ptr<symbols::Type> type);
+  Constant(const Constant &constant);
+  Constant &operator=(const Constant &constant);
+  Constant(int i);
+  ~Constant() override;
 
-   bool operator==(const Constant &constant) const;
-   bool operator!=(const Constant &constant) const;
+  bool operator==(const Constant &constant) const;
+  bool operator!=(const Constant &constant) const;
 
-   std::unique_ptr<Expr> Clone() const final {
-     return std::make_unique<Constant>(*this);
+  std::unique_ptr<Expr> Clone() const final {
+    return std::make_unique<Constant>(*this);
   }
 
   void Jumping(int t, int f) override;

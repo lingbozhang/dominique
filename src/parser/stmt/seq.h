@@ -21,7 +21,7 @@ namespace intellgraph {
 namespace inter {
 
 class Seq : public Stmt {
- public:
+public:
   Seq(std::unique_ptr<Stmt> stmt1, std::unique_ptr<Stmt> stmt2);
   Seq(const Seq& obj);
   Seq& operator=(const Seq& obj);

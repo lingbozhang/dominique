@@ -22,16 +22,19 @@ namespace intellgraph {
 namespace inter {
 
 class Rel : public Logical {
- public:
-   Rel(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-       std::unique_ptr<Expr> expr2);
-   Rel(const Rel &obj);
-   Rel &operator=(const Rel &obj);
-   ~Rel() override;
+public:
+  Rel(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+      std::unique_ptr<Expr> expr2);
+  Rel(const Rel &obj);
+  Rel &operator=(const Rel &obj);
+  ~Rel() override;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<Rel>(*this);
+  std::unique_ptr<Expr> Clone() const override {
+    return std::make_unique<Rel>(*this);
   }
+
+  std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
+                                       const symbols::Type *type2) override;
 
   void Jumping(int t, int f) override;
 };

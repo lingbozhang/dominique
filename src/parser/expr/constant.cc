@@ -17,12 +17,13 @@ Contributor(s):
 namespace intellgraph {
 namespace inter {
 
-Constant Constant::True() {
+const Constant &Constant::True() {
   static const Constant kTrue =
       Constant(lexer::Word::True().Clone(), symbols::Type::Bool().CloneType());
   return kTrue;
 }
-Constant Constant::False() {
+
+const Constant &Constant::False() {
   static const Constant kFalse =
       Constant(lexer::Word::False().Clone(), symbols::Type::Bool().CloneType());
   return kFalse;
@@ -31,20 +32,25 @@ Constant Constant::False() {
 Constant::Constant(std::unique_ptr<lexer::Token> token,
                    std::unique_ptr<symbols::Type> type)
     : Expr(std::move(token), std::move(type)) {}
+
 Constant::Constant(int i)
     : Expr(std::make_unique<lexer::Num>(i), symbols::Type::Int().CloneType()) {}
+
 Constant::Constant(const Constant &constant)
     : Expr(constant.op_->Clone(), constant.type_->CloneType()) {}
+
 Constant &Constant::operator=(const Constant &constant) {
   op_ = constant.op_->Clone();
   type_ = constant.type_->CloneType();
   return *this;
 }
+
 Constant::~Constant() = default;
 
 bool Constant::operator==(const Constant& constant) const {
   return Expr::operator==(constant);
 }
+
 bool Constant::operator!=(const Constant& constant) const {
   return !(*this == constant);
 }

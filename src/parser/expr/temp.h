@@ -25,17 +25,17 @@ namespace intellgraph {
 namespace inter {
 
 class Temp : public Expr {
- public:
-   static int count_;
+public:
+  static int count_;
 
-   Temp(std::unique_ptr<symbols::Type> type);
-   Temp(const Temp &) = delete;
-   Temp &operator=(const Temp &) = delete;
-   ~Temp() override = default;
+  Temp(std::unique_ptr<symbols::Type> type);
+  Temp(const Temp &) = delete;
+  Temp &operator=(const Temp &) = delete;
+  ~Temp() override = default;
 
-   std::unique_ptr<Expr> Clone() const override {
-     this->Error("Temp cannot be cloned!");
-     return nullptr;
+  std::unique_ptr<Expr> Clone() const override {
+    this->Error("Temp cannot be cloned!");
+    return nullptr;
   }
 
   std::string ToString() const override {

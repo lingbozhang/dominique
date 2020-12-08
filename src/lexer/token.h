@@ -87,16 +87,16 @@ class Real : public Token {
 
 class Word : public Token {
  public:
-   static Word And();
-   static Word Or();
-   static Word Eq();
-   static Word Ne();
-   static Word Le();
-   static Word Ge();
-   static Word Minus();
-   static Word True();
-   static Word False();
-   static Word Temp();
+   static const Word &And();
+   static const Word &Or();
+   static const Word &Eq();
+   static const Word &Ne();
+   static const Word &Le();
+   static const Word &Ge();
+   static const Word &Minus();
+   static const Word &True();
+   static const Word &False();
+   static const Word &Temp();
 
    Word(const std::string &lexeme, int tag);
    Word(std::string &&lexeme, int tag);

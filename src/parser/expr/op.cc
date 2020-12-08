@@ -20,11 +20,14 @@ namespace inter {
 
 Op::Op(std::unique_ptr<lexer::Token> token, std::unique_ptr<symbols::Type> type)
     : Expr(std::move(token), std::move(type)) {}
+
 Op::Op(const Op &op) : Expr(op.op_->Clone(), op.type_->CloneType()) {}
+
 Op& Op::operator=(const Op& op) {
   Expr::operator=(op);
   return *this;
 }
+
 Op::~Op() = default;
 
 bool Op::operator==(const Op &op) const { return Expr::operator==(op); }

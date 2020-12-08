@@ -22,7 +22,7 @@ namespace intellgraph {
 namespace inter {
 
 class Else : public Stmt {
- public:
+public:
   Else(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt1,
        std::unique_ptr<Stmt> stmt2);
   Else(const Else& obj);

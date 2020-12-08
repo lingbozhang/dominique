@@ -32,19 +32,17 @@ class Logical : public Expr {
    bool operator==(const Logical &obj) const;
    bool operator!=(const Logical &obj) const;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<Logical>(*this);
-  }
+   std::unique_ptr<Expr> Clone() const override { return nullptr; }
 
-  std::string ToString() const override {
-    return expr1_->ToString() + " " + this->op_->ToString() + " " +
-           expr2_->ToString();
+   std::string ToString() const override {
+     return expr1_->ToString() + " " + this->op_->ToString() + " " +
+            expr2_->ToString();
   }
 
   std::unique_ptr<Expr> Gen() final;
 
-  std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
-                                       const symbols::Type *type2);
+  virtual std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
+                                               const symbols::Type *type2) = 0;
 
   std::unique_ptr<Expr> expr1_;
   std::unique_ptr<Expr> expr2_;

@@ -25,14 +25,17 @@ Set::Set(std::unique_ptr<Id> id, std::unique_ptr<Expr> expr)
     this->Error("type error");
   }
 }
+
 Set::Set(const Set& obj)
     : id_(std::make_unique<Id>(*obj.id_)), expr_(obj.expr_->Clone()) {}
+
 Set& Set::operator=(const Set& obj) {
   Stmt::operator=(obj);
   id_ = std::make_unique<Id>(*obj.id_);
   expr_ = obj.expr_->Clone();
   return *this;
 }
+
 Set::~Set() = default;
 
 bool Set::operator==(const Set &obj) const {

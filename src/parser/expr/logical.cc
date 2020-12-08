@@ -23,23 +23,19 @@ namespace inter {
 Logical::Logical(std::unique_ptr<lexer::Token> token,
                  std::unique_ptr<Expr> expr1, std::unique_ptr<Expr> expr2)
     : Expr(std::move(token), nullptr), expr1_(std::move(expr1)),
-      expr2_(std::move(expr2)) {
-  std::unique_ptr<symbols::Type> type =
-      this->Check(expr1_->type_.get(), expr2_->type_.get());
-  if (*type == symbols::Type::Null()) {
-    this->Error("Type Error");
-  }
-  this->type_ = type->CloneType();
-}
+      expr2_(std::move(expr2)) {}
+
 Logical::Logical(const Logical &logical)
     : Expr(logical.op_->Clone(), logical.type_->CloneType()),
       expr1_(logical.expr1_->Clone()), expr2_(logical.expr2_->Clone()) {}
+
 Logical &Logical::operator=(const Logical &logical) {
   Expr::operator=(logical);
   expr1_ = logical.expr1_->Clone();
   expr2_ = logical.expr2_->Clone();
   return *this;
 }
+
 Logical::~Logical() = default;
 
 bool Logical::operator==(const Logical &obj) const {
@@ -60,30 +56,6 @@ std::unique_ptr<Expr> Logical::Gen() {
   this->Emit(temp->ToString() + " = false");
   this->EmitLabel(a);
   return temp;
-}
-
-std::unique_ptr<symbols::Type> Logical::Check(const symbols::Type* type1,
-                                              const symbols::Type* type2) {
-  if (this->op_->tag_ == '<' || this->op_->tag_ == '>' ||
-      this->op_->tag_ == lexer::tag::kLe ||
-      this->op_->tag_ == lexer::tag::kGe) {
-    // TypeCheck for the Rel class
-    if (dynamic_cast<const symbols::Array *>(type1) != nullptr ||
-        dynamic_cast<const symbols::Array *>(type2) != nullptr) {
-      return symbols::Type::Null().CloneType();
-    } else if (*type1 == *type2) {
-      return symbols::Type::Bool().CloneType();
-    } else {
-      return symbols::Type::Null().CloneType();
-    }
-  } else {
-    // TypeCheck for the Logical class
-    if (*type1 == symbols::Type::Bool() && *type2 == symbols::Type::Bool()) {
-      return symbols::Type::Bool().CloneType();
-    } else {
-      return symbols::Type::Null().CloneType();
-    }
-  }
 }
 
 }  // namespace inter

@@ -17,26 +17,31 @@ Contributor(s):
 namespace intellgraph {
 namespace symbols {
 
-Type Type::Int() {
+const Type &Type::Int() {
   static const Type kInt = Type(TypeId::kInt);
   return kInt;
 }
-Type Type::Float() {
+
+const Type &Type::Float() {
   static const Type kFloat = Type(TypeId::kFloat);
   return kFloat;
 }
-Type Type::Char() {
+
+const Type &Type::Char() {
   static const Type kChar = Type(TypeId::kChar);
   return kChar;
 }
-Type Type::Bool() {
+
+const Type &Type::Bool() {
   static const Type kBool = Type(TypeId::kBool);
   return kBool;
 }
-Type Type::Null() {
+
+const Type &Type::Null() {
   static const Type kNull = Type(TypeId::kNull);
   return kNull;
 }
+
 bool Type::IsNumeric(const Type &p) {
   if (p == Type::Char() || p == Type::Int() || p == Type::Float()) {
     return true;
@@ -47,12 +52,15 @@ bool Type::IsNumeric(const Type &p) {
 llvm::IntegerType *Type::GenIntTy(llvm::LLVMContext &context) {
   return llvm::Type::getInt32Ty(context);
 }
+
 llvm::Type *Type::GenFloatTy(llvm::LLVMContext &context) {
   return llvm::Type::getFloatTy(context);
 }
+
 llvm::IntegerType *Type::GenCharTy(llvm::LLVMContext &context) {
   return llvm::Type::getInt8Ty(context);
 }
+
 llvm::IntegerType *Type::GenBoolTy(llvm::LLVMContext &context) {
   return llvm::Type::getInt8Ty(context);
 }
@@ -91,11 +99,14 @@ Type::Type(TypeId id) : lexer::Word("", lexer::tag::kBasic), id_(id) {
     exit(1);
   }
 }
+
 Type::Type(const std::string &lexeme, int tag, int width)
-    : lexer::Word(lexeme, tag), width_(width) {}
+    : lexer::Word(lexeme, tag), id_(TypeId::kUndefined), width_(width) {}
+
 Type::Type(const Type &type)
     : lexer::Word(type.lexeme_, type.tag_), id_(type.id_), width_(type.width_) {
 }
+
 Type& Type::operator=(const Type& type) {
   if (*this != type) {
     lexer::Word::operator=(type);
@@ -104,12 +115,14 @@ Type& Type::operator=(const Type& type) {
   }
   return *this;
 }
+
 Type::~Type() = default;
 
 bool Type::operator==(const Type& type) const {
   return lexer::Word::operator==(type) && id_ == type.id_ &&
          width_ == type.width_;
 }
+
 bool Type::operator!=(const Type& type) const { return !(*this == type); }
 
 }  // namespace symbols

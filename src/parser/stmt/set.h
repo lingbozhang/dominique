@@ -23,7 +23,7 @@ namespace intellgraph {
 namespace inter {
 
 class Set : public Stmt {
- public:
+public:
   Set(std::unique_ptr<Id> id, std::unique_ptr<Expr> expr);
   Set(const Set& obj);
   Set& operator=(const Set& obj);

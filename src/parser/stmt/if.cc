@@ -23,13 +23,16 @@ If::If(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt)
     expr_->Error("boolean required in if");
   }
 }
+
 If::If(const If& obj) : expr_(obj.expr_->Clone()), stmt_(obj.stmt_->Clone()) {}
+
 If& If::operator=(const If& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt_ = obj.stmt_->Clone();
   return *this;
 }
+
 If::~If() = default;
 
 void If::Gen(int b, int a) {

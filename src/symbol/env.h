@@ -24,16 +24,16 @@ namespace intellgraph {
 namespace symbols {
 
 class Env {
- public:
-  Env(Env* n);
+public:
+  Env(Env *n);
   ~Env();
 
-  void Put(const lexer::Word& word, std::unique_ptr<inter::Id> id);
-  inter::Id* Get(const lexer::Word& word) const;
+  void Put(const lexer::Word &word, std::unique_ptr<inter::Id> id);
+  inter::Id *Get(const lexer::Word &word) const;
 
- private:
+private:
   std::map<lexer::Word, std::unique_ptr<inter::Id>> word_to_id_;
-  Env* prev_;
+  Env *prev_ = nullptr;
 };
 
 }  // namespace symbols

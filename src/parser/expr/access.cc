@@ -22,21 +22,25 @@ Access::Access(std::unique_ptr<Id> array, std::unique_ptr<Expr> index,
     : Op(std::make_unique<lexer::Word>("[]", lexer::tag::kIndex),
          std::move(type)),
       array_(std::move(array)), index_(std::move(index)) {}
+
 Access::Access(const Access &access)
     : Op(access.op_->Clone(), access.type_->CloneType()),
       array_(access.array_->CloneId()), index_(access.index_->Clone()) {}
+
 Access &Access::operator=(const Access &access) {
   Op::operator=(access);
   array_ = access.array_->CloneId();
   index_ = access.index_->Clone();
   return *this;
 }
+
 Access::~Access() = default;
 
 bool Access::operator==(const Access &obj) const {
   return Expr::operator==(obj) && *array_ == *obj.array_ &&
          *index_ == *obj.index_;
 }
+
 bool Access::operator!=(const Access &obj) const { return !(*this == obj); }
 
 std::unique_ptr<Expr> Access::Gen() {

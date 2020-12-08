@@ -23,7 +23,7 @@ TEST(ArrayTest, Equality) {
   Array array1(Type::Float().CloneType(), 1);
   Array array2(Type::Float().CloneType(), 1);
   Array array3(Type::Int().CloneType(), 1);
-  EXPECT_TRUE(array1 == array2);
+  EXPECT_EQ(array1, array2);
   EXPECT_TRUE(array1 != array3);
 }
 

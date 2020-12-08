@@ -6,7 +6,7 @@ add_subdirectory(symbol)
 add_subdirectory(parser)
 
 cc_binary(
-  NAME "main"
+  NAME "dominique"
   SRCS "main.cc"
   DEPS 
       "parser"

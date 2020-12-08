@@ -69,6 +69,7 @@ void Parser::Program() {
 }
 
 void Parser::Move() { look_ = lex_->Scan(); }
+
 void Parser::Error(const std::string& str) {
   std::cout << "Near line " + std::to_string(lex_->get_line_number()) + ": " +
                    str;
@@ -140,7 +141,7 @@ std::unique_ptr<inter::Stmt> Parser::Stmts() {
 std::unique_ptr<inter::Stmt> Parser::Stmt() {
   std::unique_ptr<inter::Expr> x;
   std::unique_ptr<inter::Stmt> s, s1, s2;
-  std::unique_ptr<inter::Stmt> savedStmt;
+  const inter::Stmt *savedStmt = nullptr;
   switch (look_->tag_) {
     case ';': {
       Move();
@@ -163,21 +164,21 @@ std::unique_ptr<inter::Stmt> Parser::Stmt() {
     case lexer::tag::kWhile: {
       std::unique_ptr<inter::While> while_node =
           std::make_unique<inter::While>();
-      savedStmt = inter::Stmt::Enclosing().Clone();
-      inter::Stmt::Enclosing() = *while_node;
+      savedStmt = inter::Stmt::Enclosing();
+      inter::Stmt::Enclosing() = while_node.get();
       Match(lexer::tag::kWhile);
       Match('(');
       x = Bool();
       Match(')');
       s1 = Stmt();
       while_node->Init(std::move(x), std::move(s1));
-      inter::Stmt::Enclosing() = *savedStmt;
+      inter::Stmt::Enclosing() = savedStmt;
       return while_node;
     }
     case lexer::tag::kDo: {
       std::unique_ptr<inter::Do> do_node = std::make_unique<inter::Do>();
-      savedStmt = inter::Stmt::Enclosing().Clone();
-      inter::Stmt::Enclosing() = *do_node;
+      savedStmt = inter::Stmt::Enclosing();
+      inter::Stmt::Enclosing() = do_node.get();
       Match(lexer::tag::kDo);
       s1 = Stmt();
       Match(lexer::tag::kWhile);
@@ -186,7 +187,7 @@ std::unique_ptr<inter::Stmt> Parser::Stmt() {
       Match(')');
       Match(';');
       do_node->Init(std::move(x), std::move(s1));
-      inter::Stmt::Enclosing() = *savedStmt;
+      inter::Stmt::Enclosing() = savedStmt;
       return do_node;
     }
     case lexer::tag::kBreak: {

@@ -22,18 +22,18 @@ namespace intellgraph {
 namespace inter {
 
 class Access : public Op {
- public:
-   Access(std::unique_ptr<Id> array, std::unique_ptr<Expr> index,
-          std::unique_ptr<symbols::Type> type);
-   Access(const Access &access);
-   Access &operator=(const Access &access);
-   ~Access() override;
+public:
+  Access(std::unique_ptr<Id> array, std::unique_ptr<Expr> index,
+         std::unique_ptr<symbols::Type> type);
+  Access(const Access &access);
+  Access &operator=(const Access &access);
+  ~Access() override;
 
-   bool operator==(const Access &obj) const;
-   bool operator!=(const Access &obj) const;
+  bool operator==(const Access &obj) const;
+  bool operator!=(const Access &obj) const;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<Access>(*this);
+  std::unique_ptr<Expr> Clone() const override {
+    return std::make_unique<Access>(*this);
   }
 
   std::string ToString() const override {

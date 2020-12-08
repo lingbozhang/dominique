@@ -28,8 +28,8 @@ void Env::Put(const lexer::Word& word, std::unique_ptr<inter::Id> id) {
 inter::Id* Env::Get(const lexer::Word& word) const {
   const Env* e = this;
   while (e != nullptr) {
-    const auto& id_it = word_to_id_.find(word);
-    if (id_it != word_to_id_.end()) {
+    const auto &id_it = e->word_to_id_.find(word);
+    if (id_it != e->word_to_id_.end()) {
       return id_it->second.get();
     }
     e = e->prev_;

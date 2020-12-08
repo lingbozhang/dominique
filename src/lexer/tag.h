@@ -19,26 +19,26 @@ namespace intellgraph {
 namespace lexer {
 namespace tag {
 
-constexpr int kAnd = 256;
-constexpr int kBasic = 257;
-constexpr int kBreak = 258;
-constexpr int kDo = 259;
-constexpr int kElse = 260;
-constexpr int kEq = 261;
-constexpr int kFalse = 262;
-constexpr int kGe = 263;
-constexpr int kId = 264;
-constexpr int kIf = 265;
-constexpr int kIndex = 266;
-constexpr int kLe = 267;
-constexpr int kMinus = 268;
-constexpr int kNe = 269;
-constexpr int kNum = 270;
-constexpr int kOr = 271;
-constexpr int kReal = 272;
-constexpr int kTemp = 273;
-constexpr int kTrue = 274;
-constexpr int kWhile = 275;
+inline constexpr int kAnd = 256;
+inline constexpr int kBasic = 257;
+inline constexpr int kBreak = 258;
+inline constexpr int kDo = 259;
+inline constexpr int kElse = 260;
+inline constexpr int kEq = 261;
+inline constexpr int kFalse = 262;
+inline constexpr int kGe = 263;
+inline constexpr int kId = 264;
+inline constexpr int kIf = 265;
+inline constexpr int kIndex = 266;
+inline constexpr int kLe = 267;
+inline constexpr int kMinus = 268;
+inline constexpr int kNe = 269;
+inline constexpr int kNum = 270;
+inline constexpr int kOr = 271;
+inline constexpr int kReal = 272;
+inline constexpr int kTemp = 273;
+inline constexpr int kTrue = 274;
+inline constexpr int kWhile = 275;
 
 }  // namespace tag
 }  // namespace lexer

@@ -41,13 +41,7 @@ Lexer::Lexer() {
   str_iter_ = str_.begin();
 }
 
-bool Lexer::ReadCh(char c) {
-  if (!ReadCh() || peek_ != c) {
-    return false;
-  }
-  peek_ = ' ';
-  return true;
-}
+Lexer::~Lexer() = default;
 
 void Lexer::ReadCodes(const std::string& codes) {
   str_ = codes;
@@ -141,6 +135,14 @@ std::unique_ptr<Token> Lexer::Scan() {
 
 void Lexer::Reserve(const std::string &lexeme, std::unique_ptr<Word> wd) {
   words.try_emplace(lexeme, std::move(wd));
+}
+
+bool Lexer::ReadCh(char c) {
+  if (!ReadCh() || peek_ != c) {
+    return false;
+  }
+  peek_ = ' ';
+  return true;
 }
 
 bool Lexer::ReadCh() {

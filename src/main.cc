@@ -28,23 +28,20 @@ Contributor(s):
 
 using namespace intellgraph;
 
-int main() {
-  auto lex = std::make_unique<lexer::Lexer>();
-  auto parser_ = std::make_unique<parser::Parser>(std::move(lex));
-  std::string codes = "bool[10] id; id[1] = false;";
-  inter::Id expected_id =
-      inter::Id(std::make_unique<lexer::Word>("id", lexer::tag::kId),
-                std::make_unique<symbols::Array>(
-                    symbols::Type::Bool().CloneType(), 10 /* array_size */),
-                0 /* offset */);
-  inter::Access expected_index = inter::Access(
-      std::make_unique<inter::Id>(expected_id),
-      std::make_unique<inter::Arith>(
-          std::make_unique<lexer::Token>('*'), inter::Constant(1).Clone(),
-          std::make_unique<inter::Constant>(1 /* bool_width */)),
-      symbols::Type::Bool().CloneType());
-  inter::SetElem expected_stmt =
-      inter::SetElem(std::make_unique<inter::Access>(expected_index),
-                     inter::Constant::False().Clone());
+int main(int argc, char *argv[]) {
+  int counter;
+  printf("Program Name Is: %s", argv[0]);
+  if (argc <= 1) {
+    printf("Please input codes you want to parse!");
+    return 0;
+  }
+  std::cout << "Input Codes:" << std::endl;
+  printf("%s\n", argv[1]);
+  std::cout << "Generated three-address intermediate code:" << std::endl;
+  auto parser =
+      std::make_unique<parser::Parser>(std::make_unique<lexer::Lexer>());
+  std::string codes(argv[1]);
+  parser->ReadCodes(codes);
+  parser->Program();
   return 0;
 }

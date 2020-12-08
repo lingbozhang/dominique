@@ -22,17 +22,17 @@ namespace intellgraph {
 namespace inter {
 
 class Unary : public Op {
- public:
-   Unary(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr);
-   Unary(const Unary &unary);
-   Unary &operator=(const Unary &unary);
-   ~Unary() override;
+public:
+  Unary(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr);
+  Unary(const Unary &unary);
+  Unary &operator=(const Unary &unary);
+  ~Unary() override;
 
-   bool operator==(const Unary &unary) const;
-   bool operator!=(const Unary &unary) const;
+  bool operator==(const Unary &unary) const;
+  bool operator!=(const Unary &unary) const;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<Unary>(*this);
+  std::unique_ptr<Expr> Clone() const override {
+    return std::make_unique<Unary>(*this);
   }
 
   std::string ToString() const override {

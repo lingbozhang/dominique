@@ -26,10 +26,12 @@ Else::Else(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt1,
     expr_->Error("boolean required in if");
   }
 }
+
 Else::Else(const Else& obj)
     : expr_(obj.expr_->Clone()),
       stmt1_(obj.stmt1_->Clone()),
       stmt2_(obj.stmt2_->Clone()) {}
+
 Else& Else::operator=(const Else& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
@@ -37,6 +39,7 @@ Else& Else::operator=(const Else& obj) {
   stmt2_ = obj.stmt2_->Clone();
   return *this;
 }
+
 Else::~Else() = default;
 
 void Else::Gen(int b, int a) {

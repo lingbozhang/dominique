@@ -22,7 +22,7 @@ namespace intellgraph {
 namespace inter {
 
 class Do : public Stmt {
- public:
+public:
   Do();
   Do(const Do& obj);
   Do& operator=(const Do& obj);

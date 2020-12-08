@@ -18,13 +18,16 @@ namespace intellgraph {
 namespace inter {
 
 Do::Do() = default;
+
 Do::Do(const Do& obj) : expr_(obj.expr_->Clone()), stmt_(obj.stmt_->Clone()) {}
+
 Do& Do::operator=(const Do& obj) {
   Stmt::operator=(obj);
   expr_ = obj.expr_->Clone();
   stmt_ = obj.stmt_->Clone();
   return *this;
 }
+
 Do::~Do() = default;
 
 void Do::Init(std::unique_ptr<Expr> expr, std::unique_ptr<Stmt> stmt) {

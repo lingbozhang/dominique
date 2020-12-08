@@ -23,18 +23,20 @@ namespace intellgraph {
 namespace inter {
 
 class And : public Logical {
- public:
-   And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
-       std::unique_ptr<Expr> expr2);
-   And(const And &obj);
-   And &operator=(const And &obj);
-   ~And() override;
+public:
+  And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
+      std::unique_ptr<Expr> expr2);
+  And(const And &obj);
+  And &operator=(const And &obj);
+  ~And() override;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<And>(*this);
+  std::unique_ptr<Expr> Clone() const override {
+    return std::make_unique<And>(*this);
   }
 
   void Jumping(int t, int f) final;
+  std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
+                                       const symbols::Type *type2) override;
 };
 
 }  // namespace inter

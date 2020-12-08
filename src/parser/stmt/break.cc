@@ -18,11 +18,12 @@ namespace intellgraph {
 namespace inter {
 
 Break::Break() {
-  if (Stmt::Enclosing() == Stmt::Null()) {
+  if (*Stmt::Enclosing() == Stmt::Null()) {
     this->Error("Unenclosed break!");
   }
-  stmt_ = Stmt::Enclosing().Clone();
+  stmt_ = Stmt::Enclosing();
 }
+
 Break::~Break() = default;
 
 void Break::Gen(int b, int a) {

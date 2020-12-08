@@ -8,6 +8,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 # Exports compilation database for VIM-LSP
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_FLAGS "-g")
 
 find_package(LLVM REQUIRED CONFIG PATHS "/usr/local/Cellar/llvm/10.0.0_3/")
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")

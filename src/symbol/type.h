@@ -28,11 +28,11 @@ class Type : public lexer::Word {
  public:
    // Primitive types
    enum TypeId { kUndefined = 0, kInt, kFloat, kChar, kBool, kNull };
-   static Type Int();
-   static Type Float();
-   static Type Char();
-   static Type Bool();
-   static Type Null();
+   static const Type &Int();
+   static const Type &Float();
+   static const Type &Char();
+   static const Type &Bool();
+   static const Type &Null();
 
    static llvm::IntegerType *GenIntTy(llvm::LLVMContext &context);
    static llvm::Type *GenFloatTy(llvm::LLVMContext &context);

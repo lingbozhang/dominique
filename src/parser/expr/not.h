@@ -21,17 +21,17 @@ namespace intellgraph {
 namespace inter {
 
 class Not : public Logical {
- public:
-   Not(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr);
-   Not(const Not &obj);
-   Not &operator=(const Not &obj);
-   ~Not() override;
+public:
+  Not(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr);
+  Not(const Not &obj);
+  Not &operator=(const Not &obj);
+  ~Not() override;
 
-   bool operator==(const Not &obj) const;
-   bool operator!=(const Not &obj) const;
+  bool operator==(const Not &obj) const;
+  bool operator!=(const Not &obj) const;
 
-   std::unique_ptr<Expr> Clone() const override {
-     return std::make_unique<Not>(*this);
+  std::unique_ptr<Expr> Clone() const override {
+    return std::make_unique<Not>(*this);
   }
 
   std::string ToString() const override {
@@ -39,6 +39,8 @@ class Not : public Logical {
   }
 
   void Jumping(int t, int f) final { this->expr2_->Jumping(f, t); }
+  std::unique_ptr<symbols::Type> Check(const symbols::Type *type1,
+                                       const symbols::Type *type2) override;
 };
 
 }  // namespace inter

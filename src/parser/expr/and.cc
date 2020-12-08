@@ -18,13 +18,26 @@ namespace intellgraph {
 namespace inter {
 And::And(std::unique_ptr<lexer::Token> token, std::unique_ptr<Expr> expr1,
          std::unique_ptr<Expr> expr2)
-    : Logical(std::move(token), std::move(expr1), std::move(expr2)) {}
+    : Logical(std::move(token), std::move(expr1), std::move(expr2)) {
+  std::unique_ptr<symbols::Type> type =
+      this->Check(expr1_->type_.get(), expr2_->type_.get());
+  if (*type == symbols::Type::Null()) {
+    this->Error("Type Error");
+  }
+  this->type_ = type->CloneType();
+}
+
 And::And(const And &obj)
-    : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {}
+    : Logical(obj.op_->Clone(), obj.expr1_->Clone(), obj.expr2_->Clone()) {
+  this->type_ = obj.type_->CloneType();
+}
+
 And& And::operator=(const And& obj) {
   Logical::operator=(obj);
+  this->type_ = obj.type_->CloneType();
   return *this;
 }
+
 And::~And() = default;
 
 void And::Jumping(int t, int f) {
@@ -32,6 +45,16 @@ void And::Jumping(int t, int f) {
   this->expr1_->Jumping(0, label);
   this->expr2_->Jumping(t, f);
   if (f == 0) this->EmitLabel(label);
+}
+
+std::unique_ptr<symbols::Type> And::Check(const symbols::Type *type1,
+                                          const symbols::Type *type2) {
+  // TypeCheck for the Logical class
+  if (*type1 == symbols::Type::Bool() && *type2 == symbols::Type::Bool()) {
+    return symbols::Type::Bool().CloneType();
+  } else {
+    return symbols::Type::Null().CloneType();
+  }
 }
 
 }  // namespace inter

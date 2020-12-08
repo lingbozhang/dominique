@@ -17,21 +17,25 @@ Contributor(s):
 namespace intellgraph {
 namespace inter {
 
-Stmt Stmt::Null() {
+const Stmt &Stmt::Null() {
   static const Stmt kNull = Stmt(-1);
   return kNull;
 }
-Stmt Stmt::Enclosing() {
-  static const Stmt kEnclosing = Stmt::Null();
+
+const Stmt *&Stmt::Enclosing() {
+  static const Stmt *kEnclosing = &Stmt::Null();
   return kEnclosing;
 }
 
 Stmt::Stmt(int after) : after_(after) {}
+
 Stmt::Stmt(const Stmt& obj) : after_(obj.after_) {}
+
 Stmt& Stmt::operator=(const Stmt& obj) {
   after_ = obj.after_;
   return *this;
 }
+
 Stmt::~Stmt() = default;
 
 }  // namespace inter

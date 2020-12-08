@@ -32,7 +32,7 @@ class Lexer {
    Lexer();
    Lexer(const Lexer &) = delete;
    Lexer &operator=(const Lexer &) = delete;
-   ~Lexer() = default;
+   ~Lexer();
 
    void ReadCodes(const std::string &codes);
    std::unique_ptr<Token> Scan();
