@@ -18,13 +18,13 @@ These instructions will get you a copy of the project up and running on your loc
 * [LLVM](https://llvm.org)
 
 LLVM can be installed with the HomeBrew.
-```bash
-$ brew install llvm
-$ # Finds llvm information installed from brew
-$ brew info llvm
-$ # Exports LLVM_DIR that allow cmake to find the LLVM
-$ # For example, command below exports LLVM_DIR in the zsh shell
-$ echo 'export LLVM_DR=/usr/local/Cellar/llvm/10.0.1' >> $HOME/.zshrc 
+```console
+brew install llvm
+# Finds llvm information installed from brew
+brew info llvm
+# Exports LLVM_DIR that allow cmake to find the LLVM
+# For example, command below exports LLVM_DIR in the zsh shell
+echo 'export LLVM_DR=/usr/local/Cellar/llvm/10.0.1' >> $HOME/.zshrc 
 ```
 
 ### Building
