@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsymbol.a CMakeFiles/symbol.dir/array.cc.o CMakeFiles/symbol.dir/type.cc.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsymbol.a

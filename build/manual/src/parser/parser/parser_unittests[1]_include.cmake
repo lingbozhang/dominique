@@ -1,0 +1,5 @@
+if(EXISTS "/Users/lingbozhang/src/dominique/build/manual/src/parser/parser/parser_unittests[1]_tests.cmake")
+  include("/Users/lingbozhang/src/dominique/build/manual/src/parser/parser/parser_unittests[1]_tests.cmake")
+else()
+  add_test(parser_unittests_NOT_BUILT parser_unittests_NOT_BUILT)
+endif()

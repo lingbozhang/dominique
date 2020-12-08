@@ -33,36 +33,40 @@ echo 'export LLVM_DR=/usr/local/Cellar/llvm/10.0.1' >> $HOME/.zshrc
 
 First we need to check out the git repo:
 
-```bash
-$ cd ${insert your workspace folder here}
-$ git clone https://github.com/lingbozhang/dominique
-$ # Initializes and updates git submodule
-$ cd dominique
-$ git submodule init
-$ git submodule update
+```console
+cd ${insert your workspace folder here}
+git clone https://github.com/lingbozhang/dominique
+# Initializes and updates git submodule
+cd dominique
+git submodule init
+git submodule update
 ```
 
 Now we should be in the project's top level folder. 
 
 #### Building Manually
 
-```bash
-$ rm -rf build/manual && mkdir -p build/manual
-$ cd build/manual
-$ cmake ../.. && make
+```console
+rm -rf build/manual && mkdir -p build/manual
+cd build/manual
+cmake ../.. && make
 ```
-## Parsing source codes
-After the binary is built, run the program and pass the source codes
+## Running Dominique
+After the binary is built, run the program and feed the codes you want Dominique
+to parse
 * Example 1:
+```console
+./dominique "{int h; float i; bool j; h=1; i=2.0; j=true;}"
+Program Name Is: ./dominiqueInput Codes:
+{int h; float i; bool j; h=1; i=2.0; j=true;}
 ```
-$ ./dominique "{int h; float i; bool j; h=1; i=2.0; j=true;}"
-$ Program Name Is: ./dominiqueInput Codes:
-$ {int h; float i; bool j; h=1; i=2.0; j=true;}
-$ Generated three-address intermediate code:
-$ L1:	h = 1
-$ L3:	i = 2.000000
-$ L4:	j = true
-$ L5:L2:%
+Expected result:
+```console
+Generated three-address intermediate code:
+L1:	h = 1
+L3:	i = 2.000000
+L4:	j = true
+L5:L2:%
 ```
 
 ## Running Tests

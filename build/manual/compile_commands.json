@@ -1,0 +1,197 @@
+[
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/simple-example.dir/llvm_example.cc.o -c /Users/lingbozhang/src/dominique/llvm_example.cc",
+  "file": "/Users/lingbozhang/src/dominique/llvm_example.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/third_party/googletest/googlemock",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googlemock -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -DGTEST_HAS_PTHREAD=1   -std=gnu++17 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/src/gmock-all.cc",
+  "file": "/Users/lingbozhang/src/dominique/third_party/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/third_party/googletest/googlemock",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -DGTEST_HAS_PTHREAD=1   -std=gnu++17 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/src/gmock_main.cc",
+  "file": "/Users/lingbozhang/src/dominique/third_party/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/third_party/googletest/googlemock/gtest",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -DGTEST_HAS_PTHREAD=1   -std=gnu++17 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/lingbozhang/src/dominique/third_party/googletest/googletest/src/gtest_main.cc",
+  "file": "/Users/lingbozhang/src/dominique/third_party/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/third_party/googletest/googlemock/gtest",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -DGTEST_HAS_PTHREAD=1   -std=gnu++17 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/lingbozhang/src/dominique/third_party/googletest/googletest/src/gtest-all.cc",
+  "file": "/Users/lingbozhang/src/dominique/third_party/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/dominique.dir/main.cc.o -c /Users/lingbozhang/src/dominique/src/main.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/main.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/lexer",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/lexer_unittests.dir/lexer_test.cc.o -c /Users/lingbozhang/src/dominique/src/lexer/lexer_test.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/lexer/lexer_test.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/lexer",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/lexer.dir/lexer.cc.o -c /Users/lingbozhang/src/dominique/src/lexer/lexer.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/lexer/lexer.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/lexer",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/token.dir/token.cc.o -c /Users/lingbozhang/src/dominique/src/lexer/token.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/lexer/token.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/symbol",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/symbol_unittests.dir/array_test.cc.o -c /Users/lingbozhang/src/dominique/src/symbol/array_test.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/symbol/array_test.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/symbol",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/symbol_unittests.dir/type_test.cc.o -c /Users/lingbozhang/src/dominique/src/symbol/type_test.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/symbol/type_test.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/symbol",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/env.dir/env.cc.o -c /Users/lingbozhang/src/dominique/src/symbol/env.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/symbol/env.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/symbol",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/symbol.dir/array.cc.o -c /Users/lingbozhang/src/dominique/src/symbol/array.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/symbol/array.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/symbol",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/symbol.dir/type.cc.o -c /Users/lingbozhang/src/dominique/src/symbol/type.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/symbol/type.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/node.dir/node.cc.o -c /Users/lingbozhang/src/dominique/src/parser/node.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/node.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/access.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/access.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/access.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/and.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/and.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/and.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/arith.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/arith.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/arith.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/constant.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/constant.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/constant.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/expr.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/expr.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/expr.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/id.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/id.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/id.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/logical.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/logical.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/logical.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/not.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/not.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/not.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/op.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/op.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/op.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/or.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/or.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/or.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/rel.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/rel.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/rel.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/temp.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/temp.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/temp.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/expr",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/expr.dir/unary.cc.o -c /Users/lingbozhang/src/dominique/src/parser/expr/unary.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/expr/unary.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/break.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/break.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/break.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/do.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/do.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/do.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/else.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/else.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/else.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/if.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/if.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/if.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/seq.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/seq.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/seq.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/set.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/set.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/set.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/set_elem.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/set_elem.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/set_elem.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/stmt.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/stmt.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/stmt.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/stmt",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -I/Users/lingbozhang/src/dominique/third_party/googletest/googletest -I/Users/lingbozhang/src/dominique -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/stmt.dir/while.cc.o -c /Users/lingbozhang/src/dominique/src/parser/stmt/while.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/stmt/while.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/parser",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googlemock -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIE   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/parser_unittests.dir/parser_test.cc.o -c /Users/lingbozhang/src/dominique/src/parser/parser/parser_test.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/parser/parser_test.cc"
+},
+{
+  "directory": "/Users/lingbozhang/src/dominique/build/manual/src/parser/parser",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/usr/local/Cellar/llvm/10.0.1/include -I/Users/lingbozhang/src/dominique -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest/include -isystem /Users/lingbozhang/src/dominique/third_party/googletest/googletest -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -fPIC   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++17 -o CMakeFiles/parser.dir/parser.cc.o -c /Users/lingbozhang/src/dominique/src/parser/parser/parser.cc",
+  "file": "/Users/lingbozhang/src/dominique/src/parser/parser/parser.cc"
+}
+]

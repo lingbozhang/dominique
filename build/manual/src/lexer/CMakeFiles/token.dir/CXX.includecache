@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../src/lexer/tag.h
+
+../../src/lexer/token.h
+map
+-
+memory
+-
+string
+-
+src/lexer/tag.h
+../../src/lexer/src/lexer/tag.h
+
+/Users/lingbozhang/src/dominique/src/lexer/token.cc
+src/lexer/token.h
+/Users/lingbozhang/src/dominique/src/lexer/src/lexer/token.h
+

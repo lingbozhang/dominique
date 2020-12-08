@@ -1,0 +1,5 @@
+if(EXISTS "/Users/lingbozhang/src/dominique/build/manual/src/lexer/lexer_unittests[1]_tests.cmake")
+  include("/Users/lingbozhang/src/dominique/build/manual/src/lexer/lexer_unittests[1]_tests.cmake")
+else()
+  add_test(lexer_unittests_NOT_BUILT lexer_unittests_NOT_BUILT)
+endif()
