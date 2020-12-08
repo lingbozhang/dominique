@@ -57,16 +57,53 @@ to parse
 * Example 1:
 ```console
 ./dominique "{int h; float i; bool j; h=1; i=2.0; j=true;}"
-Program Name Is: ./dominiqueInput Codes:
-{int h; float i; bool j; h=1; i=2.0; j=true;}
 ```
 Expected result:
 ```console
+Program Name Is: ./src/dominiqueInput Codes:
+{int h; float i; bool j; h=1; i=2.0; j=true;}
 Generated three-address intermediate code:
 L1:	h = 1
 L3:	i = 2.000000
 L4:	j = true
 L5:L2:%
+```
+* Example 2
+```console
+./src/dominique "{int h; h = 10; if (h >= 5) { h = 5; }}"
+```
+Expected result:
+```console
+Program Name Is: ./src/dominiqueInput Codes:
+{int h; h = 10; if (h >= 5) { h = 5; }}
+Generated three-address intermediate code:
+L1:	h = 10
+L3:	iffalse h >= 5 goto L4
+	h = 5
+L6:L4:L2:%
+```
+* Example 3
+```console
+./src/dominique "{int[100] a; a[1] = 10; while(a[1] != 5) { if(a[1] != 5) break; a[1] = 5; }}"
+```
+Expected result:
+```console
+Program Name Is: ./src/dominiqueInput Codes:
+{int[100] a; a[1] = 10; while(a[1] != 5) { if(a[1] != 5) break; a[1] = 5; }}
+Generated three-address intermediate code:
+L1:	t1 = 1 * 4
+	a [ t1 ] = 10
+L3:	t2 = 1 * 4
+	t3 = a [ t2 ]
+	iffalse t3 != 5 goto L4
+L5:	t4 = 1 * 4
+	t5 = a [ t4 ]
+	iffalse t5 != 5 goto L6
+	goto L4
+L6:	t6 = 1 * 4
+	a [ t6 ] = 5
+L8:	goto L3
+L4:L2:%
 ```
 
 ## Running Tests

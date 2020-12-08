@@ -1,5 +1,6 @@
 # ignore cmake build directory
 cmake_build/
+build/
 
 #
 .clangd/

@@ -1,5 +1,0 @@
-if(EXISTS "/Users/lingbozhang/src/dominique/build/manual/src/symbol/symbol_unittests[1]_tests.cmake")
-  include("/Users/lingbozhang/src/dominique/build/manual/src/symbol/symbol_unittests[1]_tests.cmake")
-else()
-  add_test(symbol_unittests_NOT_BUILT symbol_unittests_NOT_BUILT)
-endif()
